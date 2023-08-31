@@ -153,6 +153,7 @@ body {
 
 #botao_calculadora_adicao:hover {
     background: rgba(8, 241, 0, 0.95);
+    color: white;
     animation: moverbotaocalculadora 1s ease-in-out;
     animation-delay: 1ms;
 
@@ -178,12 +179,40 @@ body {
 
 #botao_calculadora_resultado:hover {
     background: hsla(118, 100%, 47%, 0.95);
+    color: white;
     animation: moverbotaocalculadora 1s ease-in-out;
     animation-delay: 1ms;
 
 }
 
 #botao_calculadora_resultado:active {
+    transform: scale(0.75);
+
+}
+
+
+#botao_calculadora_virgula {
+    width: 50px;
+    border-radius: 5px;
+    border: none;
+    background: #ff8800;
+    box-shadow: 0px 3px 5px 0px #000000;
+    font-size: 20px;
+    padding: 10px;
+    margin: 0px 10px 10px 10px;
+    transition: all .35s;
+}
+
+
+#botao_calculadora_virgula:hover {
+    background: rgba(57, 139, 187, 0.95);
+    color: white;
+    animation: moverbotaocalculadora 1s ease-in-out;
+    animation-delay: 1ms;
+
+}
+
+#botao_calculadora_virgula:active {
     transform: scale(0.75);
 
 }
@@ -201,6 +230,7 @@ body {
 
 #botao_calculadora_subtracao:hover {
     background: rgba(241, 0, 0, 0.949);
+    color: white;
     animation: moverbotaocalculadora 1s ease-in-out;
     animation-delay: 1ms;
 
@@ -220,6 +250,7 @@ body {
 
 #botao_calculadora_multiplicacao:hover {
     background: #ffee00f2;
+    color: white;
     animation: moverbotaocalculadora 1s ease-in-out;
     animation-delay: 1ms;
 
@@ -239,6 +270,7 @@ body {
 
 #botao_calculadora_divisao:hover {
     background: #00f7fff2;
+    color: white;
     animation: moverbotaocalculadora 1s ease-in-out;
     animation-delay: 1ms;
 
