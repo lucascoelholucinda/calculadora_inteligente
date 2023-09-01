@@ -12,6 +12,18 @@ $(document).ready(function () {
         }
     })
 
+    $('#botao_calculadora_limpar_historico').click(function (e) {
+
+        document.querySelector(".texto_resultado").value = ""
+        document.getElementById("soma").style.backgroundColor = "#ffffffff"
+        document.getElementById("soma").value = ""
+    })
+
+    $('#botao_calculadora_limpar_campo').click(function (e) {
+
+        document.querySelector(".texto_resultado").value = ""
+    })
+
     $('#botao_calculadora_virgula').click(function (e) {
 
         let virgula = document.querySelector(".texto_resultado").value + "" + e.target.value
