@@ -10,9 +10,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,600&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+   <!--  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.jqueryui.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.jqueryui.min.js"></script>
+ 
+   
     <script src="javascript/calculadora.js"></script>
+
     <title>Caculadora_Inteligente</title>
 </head>
 
@@ -24,7 +33,7 @@
     <!-- cabeçalho -->
 
     <!-- article -->
-    <article class="card">
+    <article class="orientandoElementos">
         <div class="calculadora">
             <input type="text" class="texto_calculo" id="soma" disabled>
             <input type="text" class="texto_resultado" disabled>
@@ -53,7 +62,23 @@
                 </div>
             </div>
         </div>
+        <div class="card">
+            <table id="tabelaCalculadora" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Tipo De Operacao:</th>
+                        <th>Calculo:</th>
+                        <th>Resultado:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
     </article>
+
+
 
     <!--    <section class="card">
         <h1>section</h1>

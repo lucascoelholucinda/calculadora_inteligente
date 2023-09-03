@@ -21,25 +21,31 @@ body {
 }
 
 /* cabecalho */
+.orientandoElementos{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
 
-/* .card{
-    background-color: rgba(255, 255, 255, 0.7);
+
+.card{
+    background-color: rgba(255, 255, 255);
     border-radius: 25px;
     box-shadow: 0px 3px 5px 0px #000000;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    font-family: 'Roboto Slab', serif;
-    color: #000000;
-    font-weight: bolder;
-    font-size: 20px;
     padding: 20px;
-    width: 700px;
-    height: 300px;
     margin: 100px 20px 200px 20px;
-} */
+}
+
+#tabelaCalculadora_wrapper{
+    font-family: 'Roboto Slab', serif !important;
+    color: #000000 !important;
+    font-weight: bolder !important;
+    font-size: 20px !important;
+    width: 600px !important
+}
 
 /* caculadora */
 .calculadora {
