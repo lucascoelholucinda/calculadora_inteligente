@@ -7,6 +7,31 @@ $(document).ready(function () {
             [5, 10, 15],
             [5, 10, 15]
         ],
+        "order": false,
+        rowCallback: function (row, data) {
+            if(data[0] == "Soma"){
+                $('td:eq(0)', row).css('color', '#08f100f2');
+                $('td:eq(1)', row).css('color', '#08f100f2');
+                $('td:eq(2)', row).css('color', '#08f100f2');
+            }
+            if(data[0] == "Subtração"){
+                $('td:eq(0)', row).css('color', '#f10000f2');
+                $('td:eq(1)', row).css('color', '#f10000f2');
+                $('td:eq(2)', row).css('color', '#f10000f2');
+            }
+
+            if(data[0] == "Multiplicação"){
+                $('td:eq(0)', row).css('color', '#ffee00f2');
+                $('td:eq(1)', row).css('color', '#ffee00f2');
+                $('td:eq(2)', row).css('color', '#ffee00f2');
+            }
+
+            if(data[0] == "Divisão"){
+                $('td:eq(0)', row).css('color', '#00f7fff2');
+                $('td:eq(1)', row).css('color', '#00f7fff2');
+                $('td:eq(2)', row).css('color', '#00f7fff2');
+            }
+        }
     })
 
     $('.botao_calculadora').click(function (e) {
@@ -27,6 +52,9 @@ $(document).ready(function () {
         document.querySelector(".texto_resultado").value = ""
         document.getElementById("soma").style.backgroundColor = "#ffffffff"
         document.getElementById("soma").value = ""
+        const table = $('#tabelaCalculadora').DataTable();
+        table.rows().remove().draw();
+
     })
 
     $('#botao_calculadora_limpar_campo').click(function (e) {
@@ -121,6 +149,8 @@ $(document).ready(function () {
                 document.getElementById("soma").style.backgroundColor = "#f10000f2"
                 document.getElementById("soma").value = resultado
                 document.querySelector(".texto_resultado").value = ""
+                let calculo = alterarvalor1 + " - " + alterarvalor2
+                addNewRow('Subtração', calculo, resultado)
             } else {
                 if (document.getElementById("soma").value != "") {
                     document.getElementById("soma").style.backgroundColor = "#f10000f2"
@@ -133,6 +163,8 @@ $(document).ready(function () {
                     let resultado = total.toLocaleString('pt-BR')
                     document.getElementById("soma").value = resultado
                     document.querySelector(".texto_resultado").value = ""
+                    let calculo = alterarvalor1 + " - " + alterarvalor2
+                    addNewRow('Subtração', calculo, resultado)
 
                 } else {
                     if (document.getElementById("soma").value == "" && validandoprimeirocampo == true) {
@@ -175,6 +207,8 @@ $(document).ready(function () {
                 document.getElementById("soma").style.backgroundColor = "#ffee00f2"
                 document.getElementById("soma").value = total
                 document.querySelector(".texto_resultado").value = ""
+                let calculo = alterarvalor1 + " x " + alterarvalor2
+                addNewRow('Multiplicação', calculo, total)
             } else {
                 if (document.getElementById("soma").value != "") {
                     document.getElementById("soma").style.backgroundColor = "#ffee00f2"
@@ -187,6 +221,8 @@ $(document).ready(function () {
                     let resultado = total.toLocaleString('pt-BR')
                     document.getElementById("soma").value = resultado
                     document.querySelector(".texto_resultado").value = ""
+                    let calculo = alterarvalor1 + " x " + alterarvalor2
+                    addNewRow('Multiplicação', calculo, resultado)
 
                 } else {
                     if (document.getElementById("soma").value == "" && validandoprimeirocampo == true) {
@@ -229,6 +265,8 @@ $(document).ready(function () {
                 document.getElementById("soma").style.backgroundColor = "00f7fff2"
                 document.getElementById("soma").value = total
                 document.querySelector(".texto_resultado").value = ""
+                let calculo = alterarvalor1 + " / " + alterarvalor2
+                addNewRow('Divisão', calculo, total)
             } else {
                 if (document.getElementById("soma").value != "") {
                     document.getElementById("soma").style.backgroundColor = "#00f7fff2"
@@ -241,6 +279,8 @@ $(document).ready(function () {
                     let resultado = total.toLocaleString('pt-BR')
                     document.getElementById("soma").value = resultado
                     document.querySelector(".texto_resultado").value = ""
+                    let calculo = alterarvalor1 + " / " + alterarvalor2
+                    addNewRow('Divisão', calculo, resultado)
 
                 } else {
                     if (document.getElementById("soma").value == "" && validandoprimeirocampo == true) {
@@ -444,6 +484,8 @@ $(document).ready(function () {
 function addNewRow(operacao, calculo, resultado) {
     const table = new DataTable('#tabelaCalculadora');
     table.row.add([operacao, calculo, resultado]).draw(false);
+    table.order([1, 'asc']).draw();
+    table.order([0, 'asc']).draw();
 
 }
 

@@ -21,15 +21,16 @@ body {
 }
 
 /* cabecalho */
-.orientandoElementos{
+.orientandoElementos {
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
 
-.card{
-    background-color: rgba(255, 255, 255);
+.card {
+    background-color: rgba(57, 139, 187, 0.95);
+    border: solid rgb(37, 37, 37) 4px;
     border-radius: 25px;
     box-shadow: 0px 3px 5px 0px #000000;
     border-radius: 25px;
@@ -39,12 +40,54 @@ body {
     margin: 100px 20px 200px 20px;
 }
 
-#tabelaCalculadora_wrapper{
+#tabelaCalculadora_wrapper {
     font-family: 'Roboto Slab', serif !important;
-    color: #000000 !important;
     font-weight: bolder !important;
     font-size: 20px !important;
-    width: 600px !important
+    width: 680px !important;
+    border: solid rgb(37, 37, 37) 1px;
+}
+
+
+#tabelaCalculadora_wrapper tbody {
+    background-color: rgb(36, 134, 44, 0.80) !important;
+}
+
+#tabelaCalculadora_wrapper tbody tr td {
+    border: solid rgb(37, 37, 37) 1px !important;
+}
+
+#tabelaCalculadora_wrapper tbody tr:hover {
+    background-color: rgba(57, 139, 187, 0.95) !important;
+}
+
+
+
+div#tabelaCalculadora_wrapper .fg-toolbar.ui-toolbar.ui-widget-header.ui-helper-clearfix.ui-corner-tl.ui-corner-tr {
+    font-family: 'Roboto Slab', serif !important;
+    font-weight: bolder !important;
+    font-size: 20px !important;
+    background-color: rgba(255, 255, 255, 0.6) !important;
+    color: #000000 !important;
+
+}
+
+.fg-toolbar.ui-toolbar.ui-widget-header.ui-helper-clearfix.ui-corner-bl.ui-corner-br {
+    font-family: 'Roboto Slab', serif !important;
+    font-weight: bolder !important;
+    font-size: 20px !important;
+    background-color: rgba(255, 255, 255, 0.6) !important;
+    color: #000000 !important;
+
+}
+
+
+
+
+table#tabelaCalculadora thead tr th {
+    background-color: rgb(36, 134, 44, 0.80) !important;
+    border: solid rgb(37, 37, 37) 1px;
+    color: #000000 !important;
 }
 
 /* caculadora */
@@ -69,7 +112,6 @@ body {
     align-items: center;
     margin: 10px 0px 0px 0px;
     background-color: rgba(255, 255, 255, 0.6);
-    border: solid rgb(37, 37, 37) 1px;
     border-radius: 10px;
     height: 400px;
 }
@@ -84,7 +126,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 5px;
-   /*  margin: 60px 10px 0px 0px; */
+    /*  margin: 60px 10px 0px 0px; */
 }
 
 
