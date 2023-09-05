@@ -321,6 +321,33 @@ table#tabelaCalculadora thead tr th {
 
 }
 
+
+#botao_calculadora_ponto {
+    width: 155px;
+    border-radius: 5px;
+    border: none;
+    background: #ff8800;
+    box-shadow: 0px 3px 5px 0px #000000;
+    font-size: 20px;
+    padding: 10px;
+    margin: 0px 10px 10px 10px;
+    transition: all .35s;
+}
+
+
+#botao_calculadora_ponto:hover {
+    background: rgba(57, 139, 187, 0.95);
+    color: white;
+    animation: moverbotaocalculadora 1s ease-in-out;
+    animation-delay: 1ms;
+
+}
+
+#botao_calculadora_ponto:active {
+    transform: scale(0.75);
+
+}
+
 #botao_calculadora_subtracao {
     width: 65px;
     border-radius: 5px;
