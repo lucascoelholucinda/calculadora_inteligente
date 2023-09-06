@@ -54,7 +54,7 @@ body {
 }
 
 #tabelaCalculadora_wrapper tbody tr td {
-    border: solid rgb(37, 37, 37) 1px !important;
+    border: solid rgb(37, 37, 37) 8px !important;
 }
 
 #tabelaCalculadora_wrapper tbody tr:hover {
@@ -69,6 +69,7 @@ div#tabelaCalculadora_wrapper .fg-toolbar.ui-toolbar.ui-widget-header.ui-helper-
     font-size: 20px !important;
     background-color: rgba(255, 255, 255, 0.6) !important;
     color: #000000 !important;
+    border: solid rgb(37, 37, 37) 1px !important;
 
 }
 
@@ -78,6 +79,7 @@ div#tabelaCalculadora_wrapper .fg-toolbar.ui-toolbar.ui-widget-header.ui-helper-
     font-size: 20px !important;
     background-color: rgba(255, 255, 255, 0.6) !important;
     color: #000000 !important;
+    border: solid rgb(37, 37, 37) 1px !important;
 
 }
 
@@ -88,6 +90,7 @@ table#tabelaCalculadora thead tr th {
     background-color: rgb(36, 134, 44, 0.80) !important;
     border: solid rgb(37, 37, 37) 1px;
     color: #000000 !important;
+    border: solid rgb(37, 37, 37) 10px !important;
 }
 
 /* caculadora */

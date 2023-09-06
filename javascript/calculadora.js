@@ -4,8 +4,8 @@ $(document).ready(function () {
             "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/pt-BR.json"
         },
         "lengthMenu": [
-            [5, 10, 15],
-            [5, 10, 15]
+            [3, 5, 15],
+            [3, 5, 15]
         ],
         "order": false,
         rowCallback: function (row, data) {
@@ -35,23 +35,26 @@ $(document).ready(function () {
     })
 
     $('.botao_calculadora').click(function (e) {
-
         let dados = document.querySelector(".texto_resultado").value
+        let validandovirgula1 = dados.includes(',')
         if (dados === "") {
             let valores_calcular = e.target.value
             document.querySelector(".texto_resultado").value = valores_calcular
         } else {
-            valores_calcular = document.querySelector(".texto_resultado").value + "" + e.target.value
-            let teste = brl_comma_dot(valores_calcular)
-            if (teste.length <= 21) {
-                document.querySelector(".texto_resultado").value = teste
+            if (validandovirgula1 == true) {
+                document.querySelector(".texto_resultado").value = document.querySelector(".texto_resultado").value + "" + e.target.value
             } else {
+                valores_calcular = document.querySelector(".texto_resultado").value + "" + e.target.value
+                let teste = brl_comma_dot(valores_calcular)
+                if (teste.length <= 21) {
+                    document.querySelector(".texto_resultado").value = teste
+                } else {
+                }
             }
         }
     })
 
     function brl_comma_dot(num) {
-        debugger
         var num_1 = Number(num.replace(/,/g, "").replace(/\./g, ""));//Pega a parte inteira do numero
         var num_2 = Math.round((num - num_1) * 100);//Pega a parte nao inteira
         var digits = [];
@@ -154,7 +157,7 @@ $(document).ready(function () {
                         document.getElementById("soma").style.backgroundColor = "#08f100f2"
                         document.querySelector(".texto_resultado").value = ""
                     } else {
-                        let removendopontos = valor2.replace(/,/g, ".").replace(/\./g, ".")
+                        let removendopontos = valor2.replace(/,/g, "").replace(/\./g, "")
                         let configurandoparanumero = Number(removendopontos)
                         if (isNaN(configurandoparanumero)) {
                             document.getElementById("soma").value = "Numero Invalido!"
@@ -214,7 +217,7 @@ $(document).ready(function () {
                         document.getElementById("soma").style.backgroundColor = "#f10000f2"
                         document.querySelector(".texto_resultado").value = ""
                     } else {
-                        let removendopontos = valor2.replace(/,/g, ".").replace(/\./g, ".")
+                        let removendopontos = valor2.replace(/,/g, "").replace(/\./g, "")
                         let configurandoparanumero = Number(removendopontos)
                         if (isNaN(configurandoparanumero)) {
                             document.getElementById("soma").value = "Numero Invalido!"
@@ -275,7 +278,7 @@ $(document).ready(function () {
                         document.getElementById("soma").style.backgroundColor = "#ffee00f2"
                         document.querySelector(".texto_resultado").value = ""
                     } else {
-                        let removendopontos = valor2.replace(/,/g, ".").replace(/\./g, ".")
+                        let removendopontos = valor2.replace(/,/g, "").replace(/\./g, "")
                         let configurandoparanumero = Number(removendopontos)
                         if (isNaN(configurandoparanumero)) {
                             document.getElementById("soma").value = "Numero Invalido!"
@@ -334,7 +337,7 @@ $(document).ready(function () {
                         document.getElementById("soma").style.backgroundColor = "#00f7fff2"
                         document.querySelector(".texto_resultado").value = ""
                     } else {
-                        let removendopontos = valor2.replace(/,/g, ".").replace(/\./g, ".")
+                        let removendopontos = valor2.replace(/,/g, "").replace(/\./g, "")
                         let configurandoparanumero = Number(removendopontos)
                         if (isNaN(configurandoparanumero)) {
                             document.getElementById("soma").value = "Numero Invalido!"
@@ -353,166 +356,244 @@ $(document).ready(function () {
     })
 
     $('#botao_calculadora_resultado').click(function (e) {
-        debugger
         let cor = document.getElementById("soma").style.backgroundColor
         let valor1Receber = document.getElementById("soma").value
         let valor2Receber = document.querySelector(".texto_resultado").value
         let valor1Alterado = Number(valor1Receber.replace(/,/g, "").replace(/\./g, ""))
         let valor2Alterado = Number(valor2Receber.replace(/,/g, "").replace(/\./g, ""))
-        let validandovirgula = valor1Receber.includes(',')
-        let validandoponto = valor1Receber.includes('.')
+        let validandovirgula1 = valor1Receber.includes(',')
+        let validandovirgula2 = valor2Receber.includes(',')
+        let validandoponto1 = valor1Receber.includes('.')
+        let validandoponto2 = valor2Receber.includes('.')
 
-        if (isNaN(valor1Alterado) == true || isNaN(valor2Alterado) == true || document.getElementById("soma").value) {
+        if (isNaN(valor1Alterado) == true || isNaN(valor2Alterado) == true) {
             document.getElementById("soma").style.backgroundColor = "#ffffffff"
             document.getElementById("soma").value = "Numero Invalido!"
             document.querySelector(".texto_resultado").value = ""
         } else {
-            if (document.querySelector(".texto_resultado").value == "" && document.getElementById("soma").value != "") {
-                document.querySelector(".texto_resultado").value = document.getElementById("soma").value
+            if (validandovirgula1 == true && validandoponto2 == true || validandovirgula2 == true && validandoponto1 == true) {
                 document.getElementById("soma").style.backgroundColor = "#ffffffff"
-                document.querySelector(".texto_resultado").value = document.getElementById("soma").value
-                document.getElementById("soma").value = ""
+                document.getElementById("soma").style.width = "300px"
+                document.getElementById("soma").style.margin = "0px 5px 5px 55px"
+                document.getElementById("soma").value = "Não é Possivel Calcular com esses valores!"
+                document.querySelector(".texto_resultado").value = ""
             } else {
-                if (document.querySelector(".texto_resultado").value != "" && document.getElementById("soma").value == "") {
-
+                if (document.querySelector(".texto_resultado").value == "" && document.getElementById("soma").value != "") {
+                    document.querySelector(".texto_resultado").value = document.getElementById("soma").value
+                    document.getElementById("soma").style.backgroundColor = "#ffffffff"
+                    document.querySelector(".texto_resultado").value = document.getElementById("soma").value
+                    document.getElementById("soma").value = ""
                 } else {
-                    if (cor == "rgba(8, 241, 0, 0.95)" && validandovirgula == true || validandoponto == true) {
-                        /* verde */
-                        let valor1Receber = document.getElementById("soma").value
-                        let valor2Receber = document.querySelector(".texto_resultado").value
-                        let valor1Alterado = Number(valor1Receber.replace(/,/g, "").replace(/\./g, ""))
-                        let valor2Alterado = Number(valor2Receber.replace(/,/g, "").replace(/\./g, ""))
-                        let total = valor1Alterado + valor2Alterado
-                        document.getElementById("soma").style.backgroundColor = "#ffffffff"
-                        document.getElementById("soma").value = ""
-                        document.querySelector(".texto_resultado").value = ""
-                        let calculo = valor1Alterado + " + " + valor2Alterado
-                        addNewRow('Soma', calculo, total)
+                    if (document.querySelector(".texto_resultado").value != "" && document.getElementById("soma").value == "") {
+
                     } else {
-                        if (cor == "rgba(8, 241, 0, 0.95)") {
-                            /* verde */
+                        if (cor == "rgba(8, 241, 0, 0.95)" && validandoponto1 == true) {
+                            /* verde  validandoponto1*/
                             let valor1Receber = document.getElementById("soma").value
-                            let removendopontos = valor1Receber.replace(/,/g, "").replace(/\./g, "")
-                            let valor1Alterado = Number(removendopontos)
                             let valor2Receber = document.querySelector(".texto_resultado").value
-                            let valor2Alterado = Number(valor2Receber)
+                            let valor1Alterado = Number(valor1Receber.replace(/,/g, "").replace(/\./g, ""))
+                            let valor2Alterado = Number(valor2Receber.replace(/,/g, "").replace(/\./g, ""))
                             let total = valor1Alterado + valor2Alterado
-                            let resultado = total.toLocaleString('pt-BR')
                             document.getElementById("soma").style.backgroundColor = "#ffffffff"
                             document.getElementById("soma").value = ""
                             document.querySelector(".texto_resultado").value = ""
-                            let calculo = valor1Alterado + " + " + valor2Alterado
-                            addNewRow('Soma', calculo, resultado)
-
+                            let totalconvertido = brl_comma_dot(total.toString())
+                            let calculo = valor1Receber + " + " + valor2Receber
+                            addNewRow('Soma', calculo, totalconvertido)
                         } else {
-                            if (cor == "rgba(241, 0, 0, 0.95)" && validandovirgula == true || validandoponto == true) {
-                                /* vermelho */
+                            if (cor == "rgba(8, 241, 0, 0.95)" && validandovirgula1 == true) {
+                                /* verde validandovirgula1 */
                                 let valor1Receber = document.getElementById("soma").value
                                 let valor2Receber = document.querySelector(".texto_resultado").value
-                                let valor1Alterado = Number(valor1Receber.replace(/,/g, "").replace(/\./g, ""))
-                                let valor2Alterado = Number(valor2Receber.replace(/,/g, "").replace(/\./g, ""))
-                                let total = valor1Alterado - valor2Alterado
-                                let resultado = total.toLocaleString('pt-BR')
+                                let valor1Alterado = parseFloat(valor1Receber.replace(/,/g, "."))
+                                let valor2Alterado = parseFloat(valor2Receber.replace(/,/g, "."))
+                                let total = parseFloat(valor1Alterado + valor2Alterado)
+                                let valor = total.toString()
+                                let substituindoPontoporVirgula = valor.replace(/\./g, ',')
                                 document.getElementById("soma").style.backgroundColor = "#ffffffff"
                                 document.getElementById("soma").value = ""
                                 document.querySelector(".texto_resultado").value = ""
-                                let calculo = valor1Alterado + " - " + valor2Alterado
-                                addNewRow('Subtração', calculo, resultado)
+                                let calculo = valor1Receber + " + " + valor2Receber
+                                addNewRow('Soma', calculo, substituindoPontoporVirgula)
                             } else {
-                                if (cor == "rgba(241, 0, 0, 0.95)") {
-                                    /* vermelho */
+                                if (cor == "rgba(8, 241, 0, 0.95)") {
+                                    /* verde */
                                     let valor1Receber = document.getElementById("soma").value
+                                    let removendopontos = valor1Receber.replace(/,/g, "").replace(/\./g, "")
+                                    let valor1Alterado = Number(removendopontos)
                                     let valor2Receber = document.querySelector(".texto_resultado").value
-                                    let valor1Alterado = Number(valor1Receber)
                                     let valor2Alterado = Number(valor2Receber)
-                                    let total = valor1Alterado - valor2Alterado
+                                    let total = valor1Alterado + valor2Alterado
+                                    let resultado = total.toLocaleString('pt-BR')
                                     document.getElementById("soma").style.backgroundColor = "#ffffffff"
                                     document.getElementById("soma").value = ""
                                     document.querySelector(".texto_resultado").value = ""
-                                    let calculo = valor1Alterado + " - " + valor2Alterado
-                                    addNewRow('Subtração', calculo, total)
+                                    let calculo = valor1Alterado + " + " + valor2Alterado
+                                    addNewRow('Soma', calculo, resultado)
+
                                 } else {
-                                    if (cor === "rgba(255, 238, 0, 0.95)" && validandovirgula == true || validandoponto == true) {
-                                        /* amarelo  com virgula*/
+                                    if (cor == "rgba(241, 0, 0, 0.95)" && validandoponto1 == true) {
+                                        /* vermelho validandoponto1 */
                                         let valor1Receber = document.getElementById("soma").value
                                         let valor2Receber = document.querySelector(".texto_resultado").value
-                                        let valor1Alterado = Number(valor1Receber)
-                                        let valor2Alterado = Number(valor2Receber)
-                                        let total = valor1Alterado * valor2Alterado
+                                        let valor1Alterado = Number(valor1Receber.replace(/,/g, "").replace(/\./g, ""))
+                                        let valor2Alterado = Number(valor2Receber.replace(/,/g, "").replace(/\./g, ""))
+                                        let total = valor1Alterado - valor2Alterado
+                                        let resultado = total.toLocaleString('pt-BR')
                                         document.getElementById("soma").style.backgroundColor = "#ffffffff"
                                         document.getElementById("soma").value = ""
                                         document.querySelector(".texto_resultado").value = ""
-                                        let calculo = valor1Receber + " x " + valor2Receber
-                                        addNewRow('Multiplicação', calculo, total)
+                                        let calculo = valor1Receber + " - " + valor2Receber
+                                        addNewRow('Subtração', calculo, resultado)
                                     } else {
-                                        if (cor === "rgba(255, 238, 0, 0.95)") {
-                                            /* amarelo */
+                                        if (cor == "rgba(241, 0, 0, 0.95)" && validandovirgula1 == true) {
+                                            /* vermelho validandovirgula1 */
                                             let valor1Receber = document.getElementById("soma").value
-                                            let removendopontos = valor1Receber.replace(/,/g, "").replace(/\./g, "")
-                                            let valor1Alterado = Number(removendopontos)
                                             let valor2Receber = document.querySelector(".texto_resultado").value
-                                            let valor2Alterado = Number(valor2Receber)
-                                            let total = valor1Alterado * valor2Alterado
-                                            let resultado = total.toLocaleString('pt-BR')
+                                            let valor1Alterado = parseFloat(valor1Receber.replace(/,/g, "."))
+                                            let valor2Alterado = parseFloat(valor2Receber.replace(/,/g, "."))
+                                            let total = parseFloat(valor1Alterado - valor2Alterado)
+                                            let valor = total.toString()
+                                            let substituindoPontoporVirgula = valor.replace(/\./g, ',')
                                             document.getElementById("soma").style.backgroundColor = "#ffffffff"
                                             document.getElementById("soma").value = ""
                                             document.querySelector(".texto_resultado").value = ""
-                                            let calculo = valor1Receber + " x " + valor2Receber
-                                            addNewRow('Multiplicação', calculo, resultado)
+                                            let calculo = valor1Receber + " - " + valor2Receber
+                                            addNewRow('Subtração', calculo, substituindoPontoporVirgula)
                                         } else {
-                                            if (cor === "rgba(0, 247, 255, 0.95)" && validandovirgula == true || validandoponto == true) {
-                                                /* azul */
+                                            if (cor == "rgba(241, 0, 0, 0.95)") {
+                                                /* vermelho */
                                                 let valor1Receber = document.getElementById("soma").value
                                                 let valor2Receber = document.querySelector(".texto_resultado").value
                                                 let valor1Alterado = Number(valor1Receber)
                                                 let valor2Alterado = Number(valor2Receber)
-                                                let total = valor1Alterado / valor2Alterado
+                                                let total = valor1Alterado - valor2Alterado
                                                 document.getElementById("soma").style.backgroundColor = "#ffffffff"
                                                 document.getElementById("soma").value = ""
                                                 document.querySelector(".texto_resultado").value = ""
-                                                let calculo = valor1Receber + " / " + valor2Receber
-                                                addNewRow('Divisão', calculo, total)
+                                                let calculo = valor1Alterado + " - " + valor2Alterado
+                                                addNewRow('Subtração', calculo, total)
                                             } else {
-                                                if (cor === "rgba(0, 247, 255, 0.95)") {
-                                                    /* azul */
+                                                if (cor === "rgba(255, 238, 0, 0.95)" && validandovirgula1 == true) {
+                                                    /* amarelo  com virgula*/
                                                     let valor1Receber = document.getElementById("soma").value
-                                                    let removendopontos = valor1Receber.replace(/,/g, "").replace(/\./g, "")
-                                                    let valor1Alterado = Number(removendopontos)
                                                     let valor2Receber = document.querySelector(".texto_resultado").value
-                                                    let valor2Alterado = Number(valor2Receber)
-                                                    let total = valor1Alterado / valor2Alterado
-                                                    /* let resultado = total.toLocaleString('pt-BR') */
+                                                    let valor1Alterado = parseFloat(valor1Receber.replace(/,/g, "."))
+                                                    let valor2Alterado = parseFloat(valor2Receber.replace(/,/g, "."))
+                                                    let total = parseFloat(valor1Alterado * valor2Alterado)
+                                                    let valor = total.toString()
+                                                    let substituindoPontoporVirgula = valor.replace(/\./g, ',')
                                                     document.getElementById("soma").style.backgroundColor = "#ffffffff"
                                                     document.getElementById("soma").value = ""
                                                     document.querySelector(".texto_resultado").value = ""
-                                                    let calculo = valor1Receber + " / " + valor2Receber
-                                                    addNewRow('Divisão', calculo, total)
+                                                    let calculo = valor1Receber + " x " + valor2Receber
+                                                    addNewRow('Multiplicação', calculo, substituindoPontoporVirgula)
                                                 } else {
-                                                    if (document.querySelector(".texto_resultado").value != "" && validandovirgula == true || validandoponto == true) {
+                                                    if (cor === "rgba(255, 238, 0, 0.95)" && validandoponto1 == true) {
+                                                        /* amarelo  com validandoponto1*/
                                                         let valor1Receber = document.getElementById("soma").value
                                                         let valor2Receber = document.querySelector(".texto_resultado").value
-                                                        let valor1Alterado = Number(valor1Receber)
-                                                        let valor2Alterado = Number(valor2Receber)
-                                                        let total = valor1Alterado + valor2Alterado
-                                                        document.getElementById("soma").style.backgroundColor = "#ffffffff"
-                                                        document.getElementById("soma").value = ""
-                                                        document.querySelector(".texto_resultado").value = ""
-                                                    } else {
-                                                        let valor1Receber = document.getElementById("soma").value
-                                                        let removendopontos = valor1Receber.replace(/,/g, "").replace(/\./g, "")
-                                                        let valor1Alterado = Number(removendopontos)
-                                                        let valor2Receber = document.querySelector(".texto_resultado").value
-                                                        let valor2Alterado = Number(valor2Receber)
-                                                        let total = valor1Alterado + valor2Alterado
+                                                        let valor1Alterado = Number(valor1Receber.replace(/,/g, "").replace(/\./g, ""))
+                                                        let valor2Alterado = Number(valor2Receber.replace(/,/g, "").replace(/\./g, ""))
+                                                        let total = valor1Alterado * valor2Alterado
                                                         let resultado = total.toLocaleString('pt-BR')
                                                         document.getElementById("soma").style.backgroundColor = "#ffffffff"
                                                         document.getElementById("soma").value = ""
                                                         document.querySelector(".texto_resultado").value = ""
+                                                        let calculo = valor1Receber + " x " + valor2Receber
+                                                        addNewRow('Multiplicação', calculo, resultado)
+                                                    } else {
+                                                        if (cor === "rgba(255, 238, 0, 0.95)") {
+                                                            /* amarelo */
+                                                            let valor1Receber = document.getElementById("soma").value
+                                                            let removendopontos = valor1Receber.replace(/,/g, "").replace(/\./g, "")
+                                                            let valor1Alterado = Number(removendopontos)
+                                                            let valor2Receber = document.querySelector(".texto_resultado").value
+                                                            let valor2Alterado = Number(valor2Receber)
+                                                            let total = valor1Alterado * valor2Alterado
+                                                            let resultado = total.toLocaleString('pt-BR')
+                                                            document.getElementById("soma").style.backgroundColor = "#ffffffff"
+                                                            document.getElementById("soma").value = ""
+                                                            document.querySelector(".texto_resultado").value = ""
+                                                            let calculo = valor1Receber + " x " + valor2Receber
+                                                            addNewRow('Multiplicação', calculo, resultado)
+                                                        } else {
+                                                            if (cor === "rgba(0, 247, 255, 0.95)" && validandovirgula1 == true) {
+                                                                /* azul validandovirgula1 */
+                                                                let valor1Receber = document.getElementById("soma").value
+                                                                let valor2Receber = document.querySelector(".texto_resultado").value
+                                                                let valor1Alterado = parseFloat(valor1Receber.replace(/,/g, "."))
+                                                                let valor2Alterado = parseFloat(valor2Receber.replace(/,/g, "."))
+                                                                let total = parseFloat(valor1Alterado / valor2Alterado)
+                                                                let valor = total.toString()
+                                                                let substituindoPontoporVirgula = valor.replace(/\./g, ',')
+                                                                document.getElementById("soma").style.backgroundColor = "#ffffffff"
+                                                                document.getElementById("soma").value = ""
+                                                                document.querySelector(".texto_resultado").value = ""
+                                                                let calculo = valor1Receber + " / " + valor2Receber
+                                                                addNewRow('Divisão', calculo, substituindoPontoporVirgula)
+                                                            } else {
+                                                                if (cor === "rgba(0, 247, 255, 0.95)" && validandoponto1 == true) {
+                                                                    /* azul validandoponto1 */
+                                                                    let valor1Receber = document.getElementById("soma").value
+                                                                    let valor2Receber = document.querySelector(".texto_resultado").value
+                                                                    let valor1Alterado = Number(valor1Receber.replace(/,/g, "").replace(/\./g, ""))
+                                                                    let valor2Alterado = Number(valor2Receber.replace(/,/g, "").replace(/\./g, ""))
+                                                                    let total = valor1Alterado / valor2Alterado
+                                                                    let valor = total.toString()
+                                                                    let substituindoPontoporVirgula = valor.replace(/\./g, ',')
+                                                                    /* let resultado = total.toLocaleString('pt-BR') */
+                                                                    document.getElementById("soma").style.backgroundColor = "#ffffffff"
+                                                                    document.getElementById("soma").value = ""
+                                                                    document.querySelector(".texto_resultado").value = ""
+                                                                    let calculo = valor1Receber + " / " + valor2Receber
+                                                                    addNewRow('Divisão', calculo, substituindoPontoporVirgula)
+                                                                } else {
+                                                                    if (cor === "rgba(0, 247, 255, 0.95)") {
+                                                                        /* azul */
+                                                                        let valor1Receber = document.getElementById("soma").value
+                                                                        let removendopontos = valor1Receber.replace(/,/g, "").replace(/\./g, "")
+                                                                        let valor1Alterado = Number(removendopontos)
+                                                                        let valor2Receber = document.querySelector(".texto_resultado").value
+                                                                        let valor2Alterado = Number(valor2Receber)
+                                                                        let total = valor1Alterado / valor2Alterado
+                                                                        /* let resultado = total.toLocaleString('pt-BR') */
+                                                                        document.getElementById("soma").style.backgroundColor = "#ffffffff"
+                                                                        document.getElementById("soma").value = ""
+                                                                        document.querySelector(".texto_resultado").value = ""
+                                                                        let calculo = valor1Receber + " / " + valor2Receber
+                                                                        addNewRow('Divisão', calculo, total)
+                                                                    } else {
+                                                                        if (document.querySelector(".texto_resultado").value != "" && validandovirgula1 == true || validandoponto1 == true) {
+                                                                            let valor1Receber = document.getElementById("soma").value
+                                                                            let valor2Receber = document.querySelector(".texto_resultado").value
+                                                                            let valor1Alterado = Number(valor1Receber)
+                                                                            let valor2Alterado = Number(valor2Receber)
+                                                                            let total = valor1Alterado + valor2Alterado
+                                                                            document.getElementById("soma").style.backgroundColor = "#ffffffff"
+                                                                            document.getElementById("soma").value = ""
+                                                                            document.querySelector(".texto_resultado").value = ""
+                                                                        } else {
+                                                                            let valor1Receber = document.getElementById("soma").value
+                                                                            let removendopontos = valor1Receber.replace(/,/g, "").replace(/\./g, "")
+                                                                            let valor1Alterado = Number(removendopontos)
+                                                                            let valor2Receber = document.querySelector(".texto_resultado").value
+                                                                            let valor2Alterado = Number(valor2Receber)
+                                                                            let total = valor1Alterado + valor2Alterado
+                                                                            let resultado = total.toLocaleString('pt-BR')
+                                                                            document.getElementById("soma").style.backgroundColor = "#ffffffff"
+                                                                            document.getElementById("soma").value = ""
+                                                                            document.querySelector(".texto_resultado").value = ""
 
+                                                                        }
+
+                                                                    }
+
+                                                                }
+                                                            }
+                                                        }
                                                     }
-
                                                 }
-
                                             }
                                         }
                                     }
@@ -522,6 +603,7 @@ $(document).ready(function () {
                     }
                 }
             }
+
         }
     })
 
