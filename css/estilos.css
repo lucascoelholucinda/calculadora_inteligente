@@ -43,8 +43,6 @@ body {
 #tabelaCalculadora_wrapper {
     font-family: 'Roboto Slab', serif !important;
     font-weight: bolder !important;
-    font-size: 20px !important;
-    width: 680px !important;
     border: solid rgb(37, 37, 37) 1px;
 }
 
@@ -54,7 +52,7 @@ body {
 }
 
 #tabelaCalculadora_wrapper tbody tr td {
-    border: solid rgb(37, 37, 37) 8px !important;
+    border: solid rgb(37, 37, 37) 1px !important;
 }
 
 #tabelaCalculadora_wrapper tbody tr:hover {
@@ -90,7 +88,7 @@ table#tabelaCalculadora thead tr th {
     background-color: rgb(36, 134, 44, 0.80) !important;
     border: solid rgb(37, 37, 37) 1px;
     color: #000000 !important;
-    border: solid rgb(37, 37, 37) 10px !important;
+    border: solid rgb(37, 37, 37) 1px !important;
 }
 
 /* caculadora */
@@ -129,7 +127,7 @@ table#tabelaCalculadora thead tr th {
     display: flex;
     flex-direction: row;
     gap: 5px;
-    /*  margin: 60px 10px 0px 0px; */
+    margin: 0px 8px 0px 0px;
 }
 
 
@@ -439,3 +437,24 @@ table#tabelaCalculadora thead tr th {
 }
 
 /* rodape */
+
+
+@media screen and (max-width: 1303px){
+
+    .orientandoElementos {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .calculadora{
+        margin: 50px 20px 50px 20px;
+    }
+
+    .card{
+        margin: 0px;
+    }
+
+}
+
