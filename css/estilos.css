@@ -42,7 +42,15 @@ body {
 
 #tabelaCalculadora_wrapper {
     font-family: 'Roboto Slab', serif !important;
+    /* width: 25% !important; */
     border: solid rgb(37, 37, 37) 1px;
+}
+
+
+table#tabelaCalculadora.display.dataTable.no-footer {
+   
+    width: 680px !important;
+  
 }
 
 
@@ -438,7 +446,10 @@ table#tabelaCalculadora thead tr th {
 /* rodape */
 
 
-@media screen and (max-width: 1303px){
+
+
+
+@media screen and (max-width: 1303px) {
 
     .orientandoElementos {
         display: flex;
@@ -447,13 +458,18 @@ table#tabelaCalculadora thead tr th {
         align-items: center;
     }
 
-    .calculadora{
+    table#tabelaCalculadora.display.dataTable.no-footer {
+   
+        width: 100% !important;
+      
+    }
+
+    .calculadora {
         margin: 50px 20px 50px 20px;
     }
 
-    .card{
+    .card {
         margin: 0px 20px 0px 20px;
     }
 
 }
-
