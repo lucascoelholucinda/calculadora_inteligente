@@ -42,7 +42,6 @@ body {
 
 #tabelaCalculadora_wrapper {
     font-family: 'Roboto Slab', serif !important;
-    font-weight: bolder !important;
     border: solid rgb(37, 37, 37) 1px;
 }
 
@@ -62,9 +61,8 @@ body {
 
 
 div#tabelaCalculadora_wrapper .fg-toolbar.ui-toolbar.ui-widget-header.ui-helper-clearfix.ui-corner-tl.ui-corner-tr {
-    font-family: 'Roboto Slab', serif !important;
-    font-weight: bolder !important;
-    font-size: 20px !important;
+    font-family: 'Lobster', cursive !important;
+    font-size: 18px !important;
     background-color: rgba(255, 255, 255, 0.6) !important;
     color: #000000 !important;
     border: solid rgb(37, 37, 37) 1px !important;
@@ -72,9 +70,8 @@ div#tabelaCalculadora_wrapper .fg-toolbar.ui-toolbar.ui-widget-header.ui-helper-
 }
 
 .fg-toolbar.ui-toolbar.ui-widget-header.ui-helper-clearfix.ui-corner-bl.ui-corner-br {
-    font-family: 'Roboto Slab', serif !important;
-    font-weight: bolder !important;
-    font-size: 20px !important;
+    font-family: 'Lobster', cursive !important;
+    font-size: 18px !important;
     background-color: rgba(255, 255, 255, 0.6) !important;
     color: #000000 !important;
     border: solid rgb(37, 37, 37) 1px !important;
@@ -85,9 +82,11 @@ div#tabelaCalculadora_wrapper .fg-toolbar.ui-toolbar.ui-widget-header.ui-helper-
 
 
 table#tabelaCalculadora thead tr th {
+    font-family: 'Lobster', cursive !important;
     background-color: rgb(36, 134, 44, 0.80) !important;
-    border: solid rgb(37, 37, 37) 1px;
     color: #000000 !important;
+    font-weight: normal !important;
+    font-size: 18px !important;
     border: solid rgb(37, 37, 37) 1px !important;
 }
 
@@ -453,7 +452,7 @@ table#tabelaCalculadora thead tr th {
     }
 
     .card{
-        margin: 0px;
+        margin: 0px 20px 0px 20px;
     }
 
 }
