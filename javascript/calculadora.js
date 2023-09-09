@@ -1,7 +1,5 @@
 $(document).ready(function () {
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-      })
+
     $('#tabelaCalculadora').DataTable({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/pt-BR.json"
@@ -11,6 +9,13 @@ $(document).ready(function () {
             [3, 5, 15]
         ],
         "order": false,
+        "scrollX": true,
+        "columnDefs": [
+            { "width": "10%", "targets": 0 },
+            { "width": "10%", "targets": 1 },
+            { "width": "60%", "targets": 2 }
+
+        ],
         rowCallback: function (row, data) {
             if (data[0] == "Soma") {
                 $('td:eq(0)', row).css('color', '#08f100f2');
@@ -36,7 +41,6 @@ $(document).ready(function () {
             }
         }
     })
-
     $('.botao_calculadora').click(function (e) {
         let dados = document.querySelector(".texto_resultado").value
         let validandovirgula1 = dados.includes(',')
@@ -167,7 +171,7 @@ $(document).ready(function () {
             if (document.getElementById("soma").style.backgroundColor != "rgba(8, 241, 0, 0.95)") {
                 document.getElementById("soma").style.backgroundColor = "#08f100f2"
                 document.querySelector(".texto_resultado").value = ""
-            } 
+            }
         } else {
             if (validandovirgula1 == true && validandoponto2 == true || validandovirgula2 == true && validandoponto1 == true) {
                 document.getElementById("soma").style.backgroundColor = "#f10000f2"
