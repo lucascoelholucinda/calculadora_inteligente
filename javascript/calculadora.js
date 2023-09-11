@@ -1206,8 +1206,8 @@ $(document).ready(function () {
                 /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula */
                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                 let total = transformandoValorPontencia1 + segundovaloralterado
-                document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                document.querySelector(".primeirovalor").value = total
+                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                document.querySelector(".primeirovalor").value = ""
                 document.querySelector(".segundovalor").value = ""
                 let calculo = primeirovalor + " + " + segundovalor
                 addNewRow('Adição', calculo, total)
@@ -1216,8 +1216,8 @@ $(document).ready(function () {
                     /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
                     let segundovaloralterado = Number(segundovalor)
                     let total = transformandoValorPontencia1 + segundovaloralterado
-                    document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                    document.querySelector(".primeirovalor").value = total
+                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                    document.querySelector(".primeirovalor").value = ""
                     document.querySelector(".segundovalor").value = ""
                     let calculo = primeirovalor + " + " + segundovalor
                     addNewRow('Adição', calculo, total)
@@ -1226,8 +1226,8 @@ $(document).ready(function () {
                         /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
                         let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                         let total = transformandoValorPontencia1 + segundovaloralterado
-                        document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                        document.querySelector(".primeirovalor").value = total
+                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                        document.querySelector(".primeirovalor").value = ""
                         document.querySelector(".segundovalor").value = ""
                         let calculo = primeirovalor + " + " + segundovalor
                         addNewRow('Adição', calculo, total)
@@ -1248,8 +1248,8 @@ $(document).ready(function () {
                                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                 let total = primeirovaloralterado + segundovaloralterado
                                 let valor = total.toLocaleString('pt-BR')
-                                document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                                document.querySelector(".primeirovalor").value = valor
+                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                document.querySelector(".primeirovalor").value = ""
                                 document.querySelector(".segundovalor").value = ""
                                 let calculo = primeirovalor + " + " + segundovalor
                                 addNewRow('Adição', calculo, valor)
@@ -1261,8 +1261,8 @@ $(document).ready(function () {
                                     let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                     let total = primeirovaloralterado + segundovaloralterado
                                     let valor = total.toLocaleString('pt-BR')
-                                    document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                                    document.querySelector(".primeirovalor").value = valor
+                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                    document.querySelector(".primeirovalor").value = ""
                                     document.querySelector(".segundovalor").value = ""
                                     let calculo = primeirovalor + " + " + segundovalor
                                     addNewRow('Adição', calculo, valor)
@@ -1274,9 +1274,9 @@ $(document).ready(function () {
                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                         let total = primeirovaloralterado + segundovaloralterado
                                         let valor = total.toLocaleString('pt-BR')
-                                        document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                                        document.querySelector(".primeirovalor").value = valor
-                                        document.querySelector(".segundovalor").value = ""
+                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                        document.querySelector(".primeirovalor").value = ""
+                                        document.querySelector(".segundovalor").value = valor
                                         let calculo = primeirovalor + " + " + segundovalor
                                         addNewRow('Adição', calculo, valor)
                                     } else {
@@ -1286,9 +1286,9 @@ $(document).ready(function () {
                                             let segundovaloralterado = parseInt(segundovalor)
                                             let total = primeirovaloralterado + segundovaloralterado
                                             let valor = total.toLocaleString('pt-BR')
-                                            document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                                            document.querySelector(".primeirovalor").value = valor
-                                            document.querySelector(".segundovalor").value = ""
+                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                            document.querySelector(".primeirovalor").value = ""
+                                            document.querySelector(".segundovalor").value = valor
                                             let calculo = primeirovalor + " + " + segundovalor
                                             addNewRow('Adição', calculo, valor)
 
@@ -1299,9 +1299,9 @@ $(document).ready(function () {
                                                 let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                 let total = primeirovaloralterado + segundovaloralterado
                                                 let valor = total.toLocaleString('pt-BR')
-                                                document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                                                document.querySelector(".primeirovalor").value = valor
-                                                document.querySelector(".segundovalor").value = ""
+                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                document.querySelector(".primeirovalor").value = ""
+                                                document.querySelector(".segundovalor").value = valor
                                                 let calculo = primeirovalor + " + " + segundovalor
                                                 addNewRow('Adição', calculo, valor)
                                             } else {
@@ -1311,9 +1311,9 @@ $(document).ready(function () {
                                                     let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                     let total = primeirovaloralterado + segundovaloralterado
                                                     let valor = total.toLocaleString('pt-BR')
-                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                                                    document.querySelector(".primeirovalor").value = valor
-                                                    document.querySelector(".segundovalor").value = ""
+                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                    document.querySelector(".primeirovalor").value = ""
+                                                    document.querySelector(".segundovalor").value = valor
                                                     let calculo = primeirovalor + " + " + segundovalor
                                                     addNewRow('Adição', calculo, valor)
                                                 } else {
@@ -1323,9 +1323,9 @@ $(document).ready(function () {
                                                         let segundovaloralterado = parseInt(segundovalor)
                                                         let total = primeirovaloralterado + segundovaloralterado
                                                         let valor = total.toLocaleString('pt-BR')
-                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                                                        document.querySelector(".primeirovalor").value = valor
-                                                        document.querySelector(".segundovalor").value = ""
+                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                        document.querySelector(".primeirovalor").value = ""
+                                                        document.querySelector(".segundovalor").value = valor
                                                         let calculo = primeirovalor + " + " + segundovalor
                                                         addNewRow('Adição', calculo, valor)
 
@@ -1336,9 +1336,9 @@ $(document).ready(function () {
                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                             let total = primeirovaloralterado + segundovaloralterado
                                                             let valor = total.toLocaleString('pt-BR')
-                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                                                            document.querySelector(".primeirovalor").value = valor
-                                                            document.querySelector(".segundovalor").value = ""
+                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                            document.querySelector(".primeirovalor").value = ""
+                                                            document.querySelector(".segundovalor").value = valor
                                                             let calculo = primeirovalor + " + " + segundovalor
                                                             addNewRow('Adição', calculo, valor)
                                                         } else {
@@ -1348,9 +1348,9 @@ $(document).ready(function () {
                                                                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                 let total = primeirovaloralterado + segundovaloralterado
                                                                 let valor = total.toLocaleString('pt-BR')
-                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                                                                document.querySelector(".primeirovalor").value = valor
-                                                                document.querySelector(".segundovalor").value = ""
+                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                document.querySelector(".primeirovalor").value = ""
+                                                                document.querySelector(".segundovalor").value = valor
                                                                 let calculo = primeirovalor + " + " + segundovalor
                                                                 addNewRow('Adição', calculo, valor)
                                                             } else {
@@ -1360,9 +1360,9 @@ $(document).ready(function () {
                                                                     let segundovaloralterado = Number(segundovalor)
                                                                     let total = primeirovaloralterado + segundovaloralterado
                                                                     let valor = total.toLocaleString('pt-BR')
-                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
-                                                                    document.querySelector(".primeirovalor").value = valor
-                                                                    document.querySelector(".segundovalor").value = ""
+                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                    document.querySelector(".primeirovalor").value = ""
+                                                                    document.querySelector(".segundovalor").value = valor
                                                                     let calculo = primeirovalor + " + " + segundovalor
                                                                     addNewRow('Adição', calculo, valor)
                                                                 } else {
