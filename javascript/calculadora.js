@@ -1,5 +1,12 @@
 $(document).ready(function () {
-
+    /* configurando e carregando as mensagens dos botoes */
+    $(document).tooltip({
+        position: {
+            my: "center bottom",
+            at: "center top",
+        }
+    });
+    /* configurando e carregando datable */
     $('#tabelaCalculadora').DataTable({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/pt-BR.json"
@@ -41,6 +48,7 @@ $(document).ready(function () {
             }
         }
     })
+
     $('.botao_calculadora').click(function (e) {
         let dados = document.querySelector(".segundovalor").value
         let validandovirgula1 = dados.includes(',')
@@ -182,7 +190,7 @@ $(document).ready(function () {
             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
             document.querySelector(".primeirovalor").style.width = "300px"
             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-            document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
             document.querySelector(".primeirovalor").style.color = "#ffffffff"
             document.querySelector(".segundovalor").value = ""
         } else {
@@ -221,7 +229,7 @@ $(document).ready(function () {
                             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                             document.querySelector(".primeirovalor").style.width = "300px"
                             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                            document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                             document.querySelector(".primeirovalor").style.color = "#ffffffff"
                             document.querySelector(".segundovalor").value = ""
 
@@ -432,7 +440,7 @@ $(document).ready(function () {
             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
             document.querySelector(".primeirovalor").style.width = "300px"
             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-            document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
             document.querySelector(".primeirovalor").style.color = "#ffffffff"
             document.querySelector(".segundovalor").value = ""
 
@@ -472,7 +480,7 @@ $(document).ready(function () {
                             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                             document.querySelector(".primeirovalor").style.width = "300px"
                             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                            document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                             document.querySelector(".primeirovalor").style.color = "#ffffffff"
                             document.querySelector(".segundovalor").value = ""
 
@@ -682,7 +690,7 @@ $(document).ready(function () {
             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
             document.querySelector(".primeirovalor").style.width = "300px"
             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-            document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
             document.querySelector(".primeirovalor").style.color = "#ffffffff"
             document.querySelector(".segundovalor").value = ""
 
@@ -722,7 +730,7 @@ $(document).ready(function () {
                             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                             document.querySelector(".primeirovalor").style.width = "300px"
                             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                            document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                             document.querySelector(".primeirovalor").style.color = "#ffffffff"
                             document.querySelector(".segundovalor").value = ""
 
@@ -938,7 +946,7 @@ $(document).ready(function () {
             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
             document.querySelector(".primeirovalor").style.width = "300px"
             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-            document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
             document.querySelector(".primeirovalor").style.color = "#ffffffff"
             document.querySelector(".segundovalor").value = ""
 
@@ -967,18 +975,19 @@ $(document).ready(function () {
                         /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
                         let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                         let total = transformandoValorPontencia1 / segundovaloralterado
+                        let valor = total.toLocaleString("pt-BR")
                         document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                        document.querySelector(".primeirovalor").value = total
+                        document.querySelector(".primeirovalor").value = valor
                         document.querySelector(".segundovalor").value = ""
                         let calculo = primeirovalor + " / " + segundovalor
-                        addNewRow('Divisão', calculo, total)
+                        addNewRow('Divisão', calculo, valor)
                     } else {
                         if (segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
                             /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
                             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                             document.querySelector(".primeirovalor").style.width = "300px"
                             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                            document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                             document.querySelector(".primeirovalor").style.color = "#ffffffff"
                             document.querySelector(".segundovalor").value = ""
 
@@ -1074,12 +1083,20 @@ $(document).ready(function () {
                                                         let total = primeirovaloralterado / segundovaloralterado
                                                         let valor = total.toString()
                                                         let valorconvertido = valor.replace(".", ",")
-                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                        document.querySelector(".primeirovalor").value = valorconvertido
-                                                        document.querySelector(".segundovalor").value = ""
-                                                        let calculo = primeirovalor + " / " + segundovalor
-                                                        addNewRow('Divisão', calculo, valorconvertido)
-
+                                                        if (valor == "Infinity" || valor == "NaN") {
+                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
+                                                            document.querySelector(".primeirovalor").style.width = "300px"
+                                                            document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
+                                                            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
+                                                            document.querySelector(".primeirovalor").style.color = "#ffffffff"
+                                                            document.querySelector(".segundovalor").value = ""
+                                                        } else {
+                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
+                                                            document.querySelector(".primeirovalor").value = valorconvertido
+                                                            document.querySelector(".segundovalor").value = ""
+                                                            let calculo = primeirovalor + " / " + segundovalor
+                                                            addNewRow('Divisão', calculo, valorconvertido)
+                                                        }
                                                     } else {
                                                         if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                             /* ambos os campos tem valor , o primeiro valor não tem virgula e o segundo valor tem virgula */
@@ -1088,11 +1105,21 @@ $(document).ready(function () {
                                                             let total = primeirovaloralterado / segundovaloralterado
                                                             let valor = total.toString()
                                                             let valorconvertido = valor.replace(".", ",")
-                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                            document.querySelector(".primeirovalor").value = valorconvertido
-                                                            document.querySelector(".segundovalor").value = ""
-                                                            let calculo = primeirovalor + " / " + segundovalor
-                                                            addNewRow('Divisão', calculo, valorconvertido)
+                                                            if (valor == "Infinity" || valor == "NaN") {
+                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
+                                                                document.querySelector(".primeirovalor").style.width = "300px"
+                                                                document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
+                                                                document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
+                                                                document.querySelector(".primeirovalor").style.color = "#ffffffff"
+                                                                document.querySelector(".segundovalor").value = ""
+                                                            } else {
+                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
+                                                                document.querySelector(".primeirovalor").value = valorconvertido
+                                                                document.querySelector(".segundovalor").value = ""
+                                                                let calculo = primeirovalor + " / " + segundovalor
+                                                                addNewRow('Divisão', calculo, valorconvertido)
+                                                            }
+
                                                         } else {
                                                             if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                                 /* ambos os campos tem valor , ambos os campos tem virgula*/
@@ -1101,11 +1128,21 @@ $(document).ready(function () {
                                                                 let total = primeirovaloralterado / segundovaloralterado
                                                                 let valor = total.toString()
                                                                 let valorconvertido = valor.replace(".", ",")
-                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                document.querySelector(".primeirovalor").value = valorconvertido
-                                                                document.querySelector(".segundovalor").value = ""
-                                                                let calculo = primeirovalor + " / " + segundovalor
-                                                                addNewRow('Divisão', calculo, valorconvertido)
+                                                                if (valor == "Infinity" || valor == "NaN") {
+                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
+                                                                    document.querySelector(".primeirovalor").style.width = "300px"
+                                                                    document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
+                                                                    document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
+                                                                    document.querySelector(".primeirovalor").style.color = "#ffffffff"
+                                                                    document.querySelector(".segundovalor").value = ""
+                                                                } else {
+                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
+                                                                    document.querySelector(".primeirovalor").value = valorconvertido
+                                                                    document.querySelector(".segundovalor").value = ""
+                                                                    let calculo = primeirovalor + " / " + segundovalor
+                                                                    addNewRow('Divisão', calculo, valorconvertido)
+                                                                }
+
                                                             } else {
                                                                 if (primeirovalor == "") {
                                                                     if (document.querySelector(".primeirovalor").style.backgroundColor == "" && segundovalor == "") {
@@ -1128,11 +1165,21 @@ $(document).ready(function () {
                                                                         let total = primeirovaloralterado / segundovaloralterado
                                                                         let valor = total.toString()
                                                                         let valorconvertido = valor.replace(".", ",")
-                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                        document.querySelector(".primeirovalor").value = valorconvertido
-                                                                        document.querySelector(".segundovalor").value = ""
-                                                                        let calculo = primeirovalor + " / " + segundovalor
-                                                                        addNewRow('Divisão', calculo, valorconvertido)
+                                                                        if (valor == "Infinity" || valor == "NaN") {
+                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
+                                                                            document.querySelector(".primeirovalor").style.width = "300px"
+                                                                            document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
+                                                                            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
+                                                                            document.querySelector(".primeirovalor").style.color = "#ffffffff"
+                                                                            document.querySelector(".segundovalor").value = ""
+                                                                        } else {
+                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
+                                                                            document.querySelector(".primeirovalor").value = valorconvertido
+                                                                            document.querySelector(".segundovalor").value = ""
+                                                                            let calculo = primeirovalor + " / " + segundovalor
+                                                                            addNewRow('Divisão', calculo, valorconvertido)
+                                                                        }
+
                                                                     } else {
                                                                         if (document.querySelector(".primeirovalor").style.backgroundColor != "rgba(0, 247, 255, 0.95)" && primeirovalor != "") {
                                                                             document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
@@ -1198,7 +1245,7 @@ $(document).ready(function () {
             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
             document.querySelector(".primeirovalor").style.width = "300px"
             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-            document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
             document.querySelector(".primeirovalor").style.color = "#ffffffff"
             document.querySelector(".segundovalor").value = ""
         } else {
@@ -1237,7 +1284,7 @@ $(document).ready(function () {
                             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                             document.querySelector(".primeirovalor").style.width = "300px"
                             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                            document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                             document.querySelector(".primeirovalor").style.color = "#ffffffff"
                             document.querySelector(".segundovalor").value = ""
 
@@ -1276,7 +1323,7 @@ $(document).ready(function () {
                                         let valor = total.toLocaleString('pt-BR')
                                         document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                         document.querySelector(".primeirovalor").value = ""
-                                        document.querySelector(".segundovalor").value = valor
+                                        document.querySelector(".segundovalor").value = ""
                                         let calculo = primeirovalor + " + " + segundovalor
                                         addNewRow('Adição', calculo, valor)
                                     } else {
@@ -1288,7 +1335,7 @@ $(document).ready(function () {
                                             let valor = total.toLocaleString('pt-BR')
                                             document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                             document.querySelector(".primeirovalor").value = ""
-                                            document.querySelector(".segundovalor").value = valor
+                                            document.querySelector(".segundovalor").value = ""
                                             let calculo = primeirovalor + " + " + segundovalor
                                             addNewRow('Adição', calculo, valor)
 
@@ -1301,7 +1348,7 @@ $(document).ready(function () {
                                                 let valor = total.toLocaleString('pt-BR')
                                                 document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                                 document.querySelector(".primeirovalor").value = ""
-                                                document.querySelector(".segundovalor").value = valor
+                                                document.querySelector(".segundovalor").value = ""
                                                 let calculo = primeirovalor + " + " + segundovalor
                                                 addNewRow('Adição', calculo, valor)
                                             } else {
@@ -1313,7 +1360,7 @@ $(document).ready(function () {
                                                     let valor = total.toLocaleString('pt-BR')
                                                     document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                                     document.querySelector(".primeirovalor").value = ""
-                                                    document.querySelector(".segundovalor").value = valor
+                                                    document.querySelector(".segundovalor").value = ""
                                                     let calculo = primeirovalor + " + " + segundovalor
                                                     addNewRow('Adição', calculo, valor)
                                                 } else {
@@ -1325,7 +1372,7 @@ $(document).ready(function () {
                                                         let valor = total.toLocaleString('pt-BR')
                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                                         document.querySelector(".primeirovalor").value = ""
-                                                        document.querySelector(".segundovalor").value = valor
+                                                        document.querySelector(".segundovalor").value = ""
                                                         let calculo = primeirovalor + " + " + segundovalor
                                                         addNewRow('Adição', calculo, valor)
 
@@ -1338,7 +1385,7 @@ $(document).ready(function () {
                                                             let valor = total.toLocaleString('pt-BR')
                                                             document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                                             document.querySelector(".primeirovalor").value = ""
-                                                            document.querySelector(".segundovalor").value = valor
+                                                            document.querySelector(".segundovalor").value = ""
                                                             let calculo = primeirovalor + " + " + segundovalor
                                                             addNewRow('Adição', calculo, valor)
                                                         } else {
@@ -1350,7 +1397,7 @@ $(document).ready(function () {
                                                                 let valor = total.toLocaleString('pt-BR')
                                                                 document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                                                 document.querySelector(".primeirovalor").value = ""
-                                                                document.querySelector(".segundovalor").value = valor
+                                                                document.querySelector(".segundovalor").value = ""
                                                                 let calculo = primeirovalor + " + " + segundovalor
                                                                 addNewRow('Adição', calculo, valor)
                                                             } else {
@@ -1362,7 +1409,7 @@ $(document).ready(function () {
                                                                     let valor = total.toLocaleString('pt-BR')
                                                                     document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                                                     document.querySelector(".primeirovalor").value = ""
-                                                                    document.querySelector(".segundovalor").value = valor
+                                                                    document.querySelector(".segundovalor").value = ""
                                                                     let calculo = primeirovalor + " + " + segundovalor
                                                                     addNewRow('Adição', calculo, valor)
                                                                 } else {
@@ -1371,7 +1418,7 @@ $(document).ready(function () {
                                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                         document.querySelector(".primeirovalor").style.width = "300px"
                                                                         document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                                                                        document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                                                                        document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                                                                         document.querySelector(".primeirovalor").style.color = "#ffffffff"
                                                                         document.querySelector(".segundovalor").value = ""
                                                                     } else {
@@ -1379,8 +1426,8 @@ $(document).ready(function () {
                                                                             /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula */
                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                             let total = transformandoValorPontencia1 - segundovaloralterado
-                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                            document.querySelector(".primeirovalor").value = total
+                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                            document.querySelector(".primeirovalor").value = ""
                                                                             document.querySelector(".segundovalor").value = ""
                                                                             let calculo = primeirovalor + " - " + segundovalor
                                                                             addNewRow('Subtração', calculo, total)
@@ -1389,8 +1436,8 @@ $(document).ready(function () {
                                                                                 /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
                                                                                 let segundovaloralterado = Number(segundovalor)
                                                                                 let total = transformandoValorPontencia1 - segundovaloralterado
-                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                document.querySelector(".primeirovalor").value = total
+                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                 let calculo = primeirovalor + " - " + segundovalor
                                                                                 addNewRow('Subtração', calculo, total)
@@ -1399,8 +1446,8 @@ $(document).ready(function () {
                                                                                     /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
                                                                                     let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                     let total = transformandoValorPontencia1 - segundovaloralterado
-                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                    document.querySelector(".primeirovalor").value = total
+                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                    document.querySelector(".primeirovalor").value = ""
                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                     let calculo = primeirovalor + " - " + segundovalor
                                                                                     addNewRow('Subtração', calculo, total)
@@ -1410,7 +1457,7 @@ $(document).ready(function () {
                                                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                                         document.querySelector(".primeirovalor").style.width = "300px"
                                                                                         document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                                                                                        document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                                                                                        document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                                                                                         document.querySelector(".primeirovalor").style.color = "#ffffffff"
                                                                                         document.querySelector(".segundovalor").value = ""
 
@@ -1421,8 +1468,8 @@ $(document).ready(function () {
                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                             let total = primeirovaloralterado - segundovaloralterado
                                                                                             let valor = total.toLocaleString('pt-BR')
-                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                            document.querySelector(".primeirovalor").value = valor
+                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                            document.querySelector(".primeirovalor").value = ""
                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                             let calculo = primeirovalor + " - " + segundovalor
                                                                                             addNewRow('Subtração', calculo, valor)
@@ -1434,8 +1481,8 @@ $(document).ready(function () {
                                                                                                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                 let total = primeirovaloralterado - segundovaloralterado
                                                                                                 let valor = total.toLocaleString('pt-BR')
-                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                                document.querySelector(".primeirovalor").value = valor
+                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                 let calculo = primeirovalor + " - " + segundovalor
                                                                                                 addNewRow('Subtração', calculo, valor)
@@ -1447,8 +1494,8 @@ $(document).ready(function () {
                                                                                                     let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                     let total = primeirovaloralterado - segundovaloralterado
                                                                                                     let valor = total.toLocaleString('pt-BR')
-                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                                    document.querySelector(".primeirovalor").value = valor
+                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                    document.querySelector(".primeirovalor").value = ""
                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                     let calculo = primeirovalor + " - " + segundovalor
                                                                                                     addNewRow('Subtração', calculo, valor)
@@ -1459,8 +1506,8 @@ $(document).ready(function () {
                                                                                                         let segundovaloralterado = parseInt(segundovalor)
                                                                                                         let total = primeirovaloralterado - segundovaloralterado
                                                                                                         let valor = total.toLocaleString('pt-BR')
-                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                                        document.querySelector(".primeirovalor").value = valor
+                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                        document.querySelector(".primeirovalor").value = ""
                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                         let calculo = primeirovalor + " - " + segundovalor
                                                                                                         addNewRow('Subtração', calculo, valor)
@@ -1472,8 +1519,8 @@ $(document).ready(function () {
                                                                                                             let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                             let total = primeirovaloralterado - segundovaloralterado
                                                                                                             let valor = total.toLocaleString('pt-BR')
-                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                                            document.querySelector(".primeirovalor").value = valor
+                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                            document.querySelector(".primeirovalor").value = ""
                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                             let calculo = primeirovalor + " - " + segundovalor
                                                                                                             addNewRow('Subtração', calculo, valor)
@@ -1484,8 +1531,8 @@ $(document).ready(function () {
                                                                                                                 let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                 let total = primeirovaloralterado - segundovaloralterado
                                                                                                                 let valor = total.toLocaleString('pt-BR')
-                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                                                document.querySelector(".primeirovalor").value = valor
+                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                 let calculo = primeirovalor + " - " + segundovalor
                                                                                                                 addNewRow('Subtração', calculo, valor)
@@ -1496,8 +1543,8 @@ $(document).ready(function () {
                                                                                                                     let segundovaloralterado = parseInt(segundovalor)
                                                                                                                     let total = primeirovaloralterado - segundovaloralterado
                                                                                                                     let valor = total.toLocaleString('pt-BR')
-                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                                                    document.querySelector(".primeirovalor").value = valor
+                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                    document.querySelector(".primeirovalor").value = ""
                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                     let calculo = primeirovalor + " - " + segundovalor
                                                                                                                     addNewRow('Subtração', calculo, valor)
@@ -1509,8 +1556,8 @@ $(document).ready(function () {
                                                                                                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                         let total = primeirovaloralterado - segundovaloralterado
                                                                                                                         let valor = total.toLocaleString('pt-BR')
-                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                                                        document.querySelector(".primeirovalor").value = valor
+                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                        document.querySelector(".primeirovalor").value = ""
                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                         let calculo = primeirovalor + " - " + segundovalor
                                                                                                                         addNewRow('Subtração', calculo, valor)
@@ -1521,8 +1568,8 @@ $(document).ready(function () {
                                                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                             let total = primeirovaloralterado - segundovaloralterado
                                                                                                                             let valor = total.toLocaleString('pt-BR')
-                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                                                            document.querySelector(".primeirovalor").value = valor
+                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                            document.querySelector(".primeirovalor").value = ""
                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                             let calculo = primeirovalor + " - " + segundovalor
                                                                                                                             addNewRow('Subtração', calculo, valor)
@@ -1533,8 +1580,8 @@ $(document).ready(function () {
                                                                                                                                 let segundovaloralterado = Number(segundovalor)
                                                                                                                                 let total = primeirovaloralterado - segundovaloralterado
                                                                                                                                 let valor = total.toLocaleString('pt-BR')
-                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                                                                document.querySelector(".primeirovalor").value = valor
+                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                 let calculo = primeirovalor + " - " + segundovalor
                                                                                                                                 addNewRow('Subtração', calculo, valor)
@@ -1545,8 +1592,8 @@ $(document).ready(function () {
                                                                                                                                     let segundovaloralterado = Number(segundovalor)
                                                                                                                                     let total = primeirovaloralterado - segundovaloralterado
                                                                                                                                     let valor = total.toLocaleString('pt-BR')
-                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
-                                                                                                                                    document.querySelector(".primeirovalor").value = valor
+                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                    document.querySelector(".primeirovalor").value = ""
                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                     let calculo = primeirovalor + " - " + segundovalor
                                                                                                                                     addNewRow('Subtração', calculo, valor)
@@ -1556,7 +1603,7 @@ $(document).ready(function () {
                                                                                                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                                                                                         document.querySelector(".primeirovalor").style.width = "300px"
                                                                                                                                         document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                                                                                                                                        document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                                                                                                                                        document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                                                                                                                                         document.querySelector(".primeirovalor").style.color = "#ffffffff"
                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                     } else {
@@ -1564,8 +1611,8 @@ $(document).ready(function () {
                                                                                                                                             /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula  */
                                                                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                             let total = transformandoValorPontencia1 * segundovaloralterado
-                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                            document.querySelector(".primeirovalor").value = total
+                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                            document.querySelector(".primeirovalor").value = ""
                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                             let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                             addNewRow('Multiplicação', calculo, total)
@@ -1574,8 +1621,8 @@ $(document).ready(function () {
                                                                                                                                                 /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
                                                                                                                                                 let segundovaloralterado = Number(segundovalor)
                                                                                                                                                 let total = transformandoValorPontencia1 * segundovaloralterado
-                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                document.querySelector(".primeirovalor").value = total
+                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                 let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                 addNewRow('Multiplicação', calculo, total)
@@ -1584,8 +1631,8 @@ $(document).ready(function () {
                                                                                                                                                     /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
                                                                                                                                                     let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                     let total = transformandoValorPontencia1 * segundovaloralterado
-                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                    document.querySelector(".primeirovalor").value = total
+                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                    document.querySelector(".primeirovalor").value = ""
                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                     let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                     addNewRow('Multiplicação', calculo, total)
@@ -1595,7 +1642,7 @@ $(document).ready(function () {
                                                                                                                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                                                                                                         document.querySelector(".primeirovalor").style.width = "300px"
                                                                                                                                                         document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                                                                                                                                                        document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                                                                                                                                                        document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                                                                                                                                                         document.querySelector(".primeirovalor").style.color = "#ffffffff"
                                                                                                                                                         document.querySelector(".segundovalor").value = ""
 
@@ -1606,8 +1653,8 @@ $(document).ready(function () {
                                                                                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                             let total = primeirovaloralterado * segundovaloralterado
                                                                                                                                                             let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                            document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                            document.querySelector(".primeirovalor").value = ""
                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                             let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                             addNewRow('Multiplicação', calculo, valor)
@@ -1619,8 +1666,8 @@ $(document).ready(function () {
                                                                                                                                                                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                 let total = primeirovaloralterado * segundovaloralterado
                                                                                                                                                                 let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                                document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                 let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                                 addNewRow('Multiplicação', calculo, valor)
@@ -1632,8 +1679,8 @@ $(document).ready(function () {
                                                                                                                                                                     let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                     let total = primeirovaloralterado * segundovaloralterado
                                                                                                                                                                     let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                                    document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                    document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                     let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                                     addNewRow('Multiplicação', calculo, valor)
@@ -1644,8 +1691,8 @@ $(document).ready(function () {
                                                                                                                                                                         let segundovaloralterado = parseInt(segundovalor)
                                                                                                                                                                         let total = primeirovaloralterado * segundovaloralterado
                                                                                                                                                                         let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                                        document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                        document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                         let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                                         addNewRow('Multiplicação', calculo, valor)
@@ -1657,8 +1704,8 @@ $(document).ready(function () {
                                                                                                                                                                             let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                             let total = primeirovaloralterado * segundovaloralterado
                                                                                                                                                                             let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                                            document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                            document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                                             let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                                             addNewRow('Multiplicação', calculo, valor)
@@ -1670,15 +1717,15 @@ $(document).ready(function () {
                                                                                                                                                                                 let total = parseFloat(primeirovaloralterado * segundovaloralterado)
                                                                                                                                                                                 let valor = total.toString()
                                                                                                                                                                                 if (valor.includes("e+")) {
-                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                                                    document.querySelector(".primeirovalor").value = total
+                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                    document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                     let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                                                     addNewRow('Multiplicação', calculo, total)
                                                                                                                                                                                 } else {
                                                                                                                                                                                     let valorFormatodo = formatadonumeros2(valor)
-                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                                                    document.querySelector(".primeirovalor").value = valorFormatodo
+                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                    document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                     let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                                                     addNewRow('Multiplicação', calculo, valorFormatodo)
@@ -1690,8 +1737,8 @@ $(document).ready(function () {
                                                                                                                                                                                     let segundovaloralterado = parseInt(segundovalor)
                                                                                                                                                                                     let total = primeirovaloralterado * segundovaloralterado
                                                                                                                                                                                     let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                                                    document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                    document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                     let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                                                     addNewRow('Multiplicação', calculo, valor)
@@ -1703,8 +1750,8 @@ $(document).ready(function () {
                                                                                                                                                                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                                                         let total = primeirovaloralterado * segundovaloralterado
                                                                                                                                                                                         let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                                                        document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                        document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                         let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                                                         addNewRow('Multiplicação', calculo, valor)
@@ -1715,8 +1762,8 @@ $(document).ready(function () {
                                                                                                                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                                                             let total = primeirovaloralterado * segundovaloralterado
                                                                                                                                                                                             let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                                                            document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                            document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                             let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                                                             addNewRow('Multiplicação', calculo, valor)
@@ -1727,8 +1774,8 @@ $(document).ready(function () {
                                                                                                                                                                                                 let segundovaloralterado = Number(segundovalor)
                                                                                                                                                                                                 let total = primeirovaloralterado * segundovaloralterado
                                                                                                                                                                                                 let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
-                                                                                                                                                                                                document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                 let calculo = primeirovalor + " x " + segundovalor
                                                                                                                                                                                                 addNewRow('Multiplicação', calculo, valor)
@@ -1738,7 +1785,7 @@ $(document).ready(function () {
                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.width = "300px"
                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                                                                                                                                                                                                    document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                                                                                                                                                                                                    document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.color = "#ffffffff"
                                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
 
@@ -1747,8 +1794,8 @@ $(document).ready(function () {
                                                                                                                                                                                                         /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula  */
                                                                                                                                                                                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                                                                         let total = transformandoValorPontencia1 / segundovaloralterado
-                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                        document.querySelector(".primeirovalor").value = total
+                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                        document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                         let calculo = primeirovalor + " / " + segundovalor
                                                                                                                                                                                                         addNewRow('Divisão', calculo, total)
@@ -1757,8 +1804,8 @@ $(document).ready(function () {
                                                                                                                                                                                                             /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
                                                                                                                                                                                                             let segundovaloralterado = Number(segundovalor)
                                                                                                                                                                                                             let total = transformandoValorPontencia1 / segundovaloralterado
-                                                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                            document.querySelector(".primeirovalor").value = total
+                                                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                            document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                             let calculo = primeirovalor + " / " + segundovalor
                                                                                                                                                                                                             addNewRow('Divisão', calculo, total)
@@ -1767,18 +1814,19 @@ $(document).ready(function () {
                                                                                                                                                                                                                 /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
                                                                                                                                                                                                                 let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                 let total = transformandoValorPontencia1 / segundovaloralterado
-                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = total
+                                                                                                                                                                                                                let valor = total.toLocaleString("pt-BR")
+                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                 let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                addNewRow('Divisão', calculo, total)
+                                                                                                                                                                                                                addNewRow('Divisão', calculo, valor)
                                                                                                                                                                                                             } else {
                                                                                                                                                                                                                 if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
                                                                                                                                                                                                                     /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
                                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.width = "300px"
                                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
-                                                                                                                                                                                                                    document.querySelector(".primeirovalor").value = "Não é Possivel Calcular com esses valores!"
+                                                                                                                                                                                                                    document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
                                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.color = "#ffffffff"
                                                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
 
@@ -1789,8 +1837,8 @@ $(document).ready(function () {
                                                                                                                                                                                                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                                                                                         let total = primeirovaloralterado / segundovaloralterado
                                                                                                                                                                                                                         let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                        document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                        document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                         let calculo = primeirovalor + " / " + segundovalor
                                                                                                                                                                                                                         addNewRow('Divisão', calculo, valor)
@@ -1802,8 +1850,8 @@ $(document).ready(function () {
                                                                                                                                                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                             let total = primeirovaloralterado / segundovaloralterado
                                                                                                                                                                                                                             let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                            document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                            document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                             let calculo = primeirovalor + " / " + segundovalor
                                                                                                                                                                                                                             addNewRow('Divisão', calculo, valor)
@@ -1815,8 +1863,8 @@ $(document).ready(function () {
                                                                                                                                                                                                                                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                                 let total = primeirovaloralterado / segundovaloralterado
                                                                                                                                                                                                                                 let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                 let calculo = primeirovalor + " / " + segundovalor
                                                                                                                                                                                                                                 addNewRow('Divisão', calculo, valor)
@@ -1827,8 +1875,8 @@ $(document).ready(function () {
                                                                                                                                                                                                                                     let segundovaloralterado = parseInt(segundovalor)
                                                                                                                                                                                                                                     let total = primeirovaloralterado / segundovaloralterado
                                                                                                                                                                                                                                     let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                     let calculo = primeirovalor + " / " + segundovalor
                                                                                                                                                                                                                                     addNewRow('Divisão', calculo, valor)
@@ -1840,8 +1888,8 @@ $(document).ready(function () {
                                                                                                                                                                                                                                         let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                                         let total = primeirovaloralterado / segundovaloralterado
                                                                                                                                                                                                                                         let valor = total.toLocaleString('pt-BR')
-                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").value = valor
+                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                         let calculo = primeirovalor + " / " + segundovalor
                                                                                                                                                                                                                                         addNewRow('Divisão', calculo, valor)
@@ -1853,15 +1901,15 @@ $(document).ready(function () {
                                                                                                                                                                                                                                             let total = parseFloat(primeirovaloralterado / segundovaloralterado)
                                                                                                                                                                                                                                             let valor = total.toString()
                                                                                                                                                                                                                                             if (valor.includes("e+")) {
-                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = total
+                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                                 let calculo = primeirovalor + " / " + segundovalor
                                                                                                                                                                                                                                                 addNewRow('Divisão', calculo, total)
                                                                                                                                                                                                                                             } else {
                                                                                                                                                                                                                                                 let valorFormatodo = formatadonumeros2(valor)
-                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = valorFormatodo
+                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                                 let calculo = primeirovalor + " / " + segundovalor
                                                                                                                                                                                                                                                 addNewRow('Divisão', calculo, valorFormatodo)
@@ -1874,11 +1922,20 @@ $(document).ready(function () {
                                                                                                                                                                                                                                                 let total = primeirovaloralterado / segundovaloralterado
                                                                                                                                                                                                                                                 let valor = total.toString()
                                                                                                                                                                                                                                                 let valorconvertido = valor.replace(".", ",")
-                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = valorconvertido
-                                                                                                                                                                                                                                                document.querySelector(".segundovalor").value = ""
-                                                                                                                                                                                                                                                let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                                addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                if (valor == "Infinity" || valor == "NaN") {
+                                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
+                                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").style.width = "300px"
+                                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
+                                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
+                                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").style.color = "#ffffffff"
+                                                                                                                                                                                                                                                    document.querySelector(".segundovalor").value = ""
+                                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").value = ""
+                                                                                                                                                                                                                                                    document.querySelector(".segundovalor").value = ""
+                                                                                                                                                                                                                                                    let calculo = primeirovalor + " / " + segundovalor
+                                                                                                                                                                                                                                                    addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                }
 
                                                                                                                                                                                                                                             } else {
                                                                                                                                                                                                                                                 if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -1888,11 +1945,21 @@ $(document).ready(function () {
                                                                                                                                                                                                                                                     let total = primeirovaloralterado / segundovaloralterado
                                                                                                                                                                                                                                                     let valor = total.toString()
                                                                                                                                                                                                                                                     let valorconvertido = valor.replace(".", ",")
-                                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                                                    document.querySelector(".primeirovalor").value = valorconvertido
-                                                                                                                                                                                                                                                    document.querySelector(".segundovalor").value = ""
-                                                                                                                                                                                                                                                    let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                                    addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                    if (valor == "Infinity" || valor == "NaN") {
+                                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
+                                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.width = "300px"
+                                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
+                                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
+                                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.color = "#ffffffff"
+                                                                                                                                                                                                                                                        document.querySelector(".segundovalor").value = ""
+                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").value = ""
+                                                                                                                                                                                                                                                        document.querySelector(".segundovalor").value = ""
+                                                                                                                                                                                                                                                        let calculo = primeirovalor + " / " + segundovalor
+                                                                                                                                                                                                                                                        addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                    }
+
                                                                                                                                                                                                                                                 } else {
                                                                                                                                                                                                                                                     if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                                                                                                                                                                                                                         /* ambos os campos tem valor , ambos os campos tem virgula*/
@@ -1901,11 +1968,21 @@ $(document).ready(function () {
                                                                                                                                                                                                                                                         let total = primeirovaloralterado / segundovaloralterado
                                                                                                                                                                                                                                                         let valor = total.toString()
                                                                                                                                                                                                                                                         let valorconvertido = valor.replace(".", ",")
-                                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                                                        document.querySelector(".primeirovalor").value = valorconvertido
-                                                                                                                                                                                                                                                        document.querySelector(".segundovalor").value = ""
-                                                                                                                                                                                                                                                        let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                                        addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                        if (valor == "Infinity" || valor == "NaN") {
+                                                                                                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
+                                                                                                                                                                                                                                                            document.querySelector(".primeirovalor").style.width = "300px"
+                                                                                                                                                                                                                                                            document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
+                                                                                                                                                                                                                                                            document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
+                                                                                                                                                                                                                                                            document.querySelector(".primeirovalor").style.color = "#ffffffff"
+                                                                                                                                                                                                                                                            document.querySelector(".segundovalor").value = ""
+                                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                                                            document.querySelector(".primeirovalor").value = ""
+                                                                                                                                                                                                                                                            document.querySelector(".segundovalor").value = ""
+                                                                                                                                                                                                                                                            let calculo = primeirovalor + " / " + segundovalor
+                                                                                                                                                                                                                                                            addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                        }
+
                                                                                                                                                                                                                                                     } else {
                                                                                                                                                                                                                                                         if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                                                                                                                                                                                                                                             /* ambos os valores são numeros inteiros*/
@@ -1914,11 +1991,21 @@ $(document).ready(function () {
                                                                                                                                                                                                                                                             let total = primeirovaloralterado / segundovaloralterado
                                                                                                                                                                                                                                                             let valor = total.toString()
                                                                                                                                                                                                                                                             let valorconvertido = valor.replace(".", ",")
-                                                                                                                                                                                                                                                            document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
-                                                                                                                                                                                                                                                            document.querySelector(".primeirovalor").value = valorconvertido
-                                                                                                                                                                                                                                                            document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                                             let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                                            addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                            if (valor == "Infinity" || valor == "NaN") {
+                                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
+                                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.width = "300px"
+                                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
+                                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = "Não é possivel calcular com esses valores!"
+                                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.color = "#ffffffff"
+                                                                                                                                                                                                                                                                document.querySelector(".segundovalor").value = ""
+                                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
+                                                                                                                                                                                                                                                                document.querySelector(".primeirovalor").value = ""
+                                                                                                                                                                                                                                                                document.querySelector(".segundovalor").value = ""
+                                                                                                                                                                                                                                                                addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                            }
+
                                                                                                                                                                                                                                                         } else {
                                                                                                                                                                                                                                                             if (primeirovalor != "" && segundovalor == "") {
                                                                                                                                                                                                                                                                 document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"

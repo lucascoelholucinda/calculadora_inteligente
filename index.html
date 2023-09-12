@@ -4,20 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- carregando os estilos perfonalizado no front-end -->
     <link rel="stylesheet" href="css/estilos.css">
-     <link rel="shortcut icon" href="imagens/calculo.png" type="image/pgn">
+    <!-- carregando os estilos perfonalizado no front-end -->
+
+    <!-- carregado o icone da pagina -->
+    <link rel="shortcut icon" href="imagens/calculo.png" type="image/pgn">
+
+    <!-- carregando as fontes de texto da api do google  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,600&display=swap" rel="stylesheet">
+    <!-- carregando as fontes de texto da api do google  -->
 
+    <!-- carregando as script e arquivos de css do plug-in jquery datable  -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.jqueryui.min.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.jqueryui.min.js"></script>
-    
+    <!-- carregando as script e arquivos de css do plug-in jquery datable  -->
 
+    <!-- carregando as script de jquery para exibir mensagens -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- carregando as script de jquery para exibir mensagens -->
+
+    <!-- carregando script de execução dos calculos e demais manipulações no front-end -->
     <script src="javascript/calculadora.js"></script>
 
     <title>Caculadora_Inteligente</title>
@@ -37,28 +51,28 @@
         <div class="calculadora">
             <input type="text" class="primeirovalor" disabled>
             <input type="text" class="segundovalor" disabled>
-            <div class="ordernador">
-                <div class="divisor2">
-                    <button class="" id="botao_calculadora_adicao" value="+">+</button>
-                    <button class="" id="botao_calculadora_subtracao" value="">-</button>
-                    <button class="" id="botao_calculadora_multiplicacao" value="">x</button>
-                    <button class="" id="botao_calculadora_divisao" value="">/</button>
+            <div class="cardInterno">
+                <div class="botoesOperacao">
+                    <button type="button" id="botao_calculadora_adicao" value="+">+</button>
+                    <button type="button" id="botao_calculadora_subtracao" value="">-</button>
+                    <button type="button" id="botao_calculadora_multiplicacao" value="">x</button>
+                    <button type="button" id="botao_calculadora_divisao" value="">/</button>
                 </div>
-                <div class="divisor">
-                    <button type="button" class="botao_calculadora" id="valor7" value="7">7</button>
-                    <button type="button" class="botao_calculadora" id="valor8" value="8">8</button>
-                    <button type="button" class="botao_calculadora" id="valor8" value="9">9</button>
-                    <button type="button" class="botao_calculadora" id="valor4" value="4">4</button>
-                    <button type="button" class="botao_calculadora" id="valor5" value="5">5</button>
-                    <button type="button" class="botao_calculadora" id="valor6" value="6">6</button>
-                    <button type="button" class="botao_calculadora" id="valor1" value="1">1</button>
-                    <button type="button" class="botao_calculadora" id="valor2" value="2">2</button>
-                    <button type="button" class="botao_calculadora" id="valor3" value="3">3</button>
-                    <button type="button" class="botao_calculadora" id="valor0" value="0">0</button>
+                <div class="botoesNumeracao">
+                    <button type="button" class="botao_calculadora" value="7">7</button>
+                    <button type="button" class="botao_calculadora" value="8">8</button>
+                    <button type="button" class="botao_calculadora" value="9">9</button>
+                    <button type="button" class="botao_calculadora" value="4">4</button>
+                    <button type="button" class="botao_calculadora" value="5">5</button>
+                    <button type="button" class="botao_calculadora" value="6">6</button>
+                    <button type="button" class="botao_calculadora" value="1">1</button>
+                    <button type="button" class="botao_calculadora" value="2">2</button>
+                    <button type="button" class="botao_calculadora" value="3">3</button>
+                    <button type="button" class="botao_calculadora" value="0">0</button>
                     <button type="button" id="botao_calculadora_virgula" value=",">,</button>
-                    <button type="button" id="botao_calculadora_limpar_historico">C</button>
-                    <button type="button" id="botao_calculadora_limpar_campo">CE</button>
-                    <button type="button" id="botao_calculadora_resultado" value="=">=</button>
+                    <button type="button" id="botao_calculadora_limpar_historico" title="Limpar Historico">C</button>
+                    <button type="button" id="botao_calculadora_limpar_campo" title="Limpar Primeiro Campo">CE</button>
+                    <button type="button" id="botao_calculadora_resultado" title="Resultado" value="=">=</button>
                 </div>
             </div>
         </div>
@@ -66,7 +80,7 @@
             <table id="tabelaCalculadora" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Tipo De Operacao:</th>
+                        <th>Tipo De Operação:</th>
                         <th>Cálculo :</th>
                         <th>Resultado:</th>
                     </tr>
