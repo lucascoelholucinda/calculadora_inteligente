@@ -2,8 +2,8 @@ body {
     margin: 0;
     padding: 0;
     background-image: radial-gradient(circle, #051937, #004d7a, #008793, #00bf72, #a8eb12);
-
-
+    background-size: 100% 100dwh;
+    background-repeat: no-repeat;
 }
 
 header {
@@ -24,19 +24,41 @@ header {
     box-shadow: none !important;
 }
 
+
+
+
 /* class cabecalho */
 .cabecalho {
     font-family: 'Lobster', cursive;
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
+    gap: 10px;
     background-color: #3a8cbbf2;
     box-shadow: 0px 0px 10px 0px #000000;
     font-size: 12px;
     padding: 5px;
     border: solid rgb(37, 37, 37) 3px;
     border-radius: 0px 0px 30px 30px;
+    transition: all .35s;
 }
+
+.cabecalho:hover{
+   color: white;
+}
+
+
+.imagem_Calculo{
+    background-color: #00bf72;
+    width: 30px;
+}
+
+
+
+/* .cabecalho:hover {
+    background: rgb(255, 255, 255,0.8);
+} */
 
 /* class orientandoElementos */
 .orientandoElementos {
@@ -44,6 +66,7 @@ header {
     justify-content: center;
     align-items: flex-start;
     gap: 30px;
+    margin-bottom: 200px;
 }
 
 /* class calculadora */
@@ -380,6 +403,7 @@ header {
     padding: 20px;
     margin-top: 150px;
 }
+
 /* classe e id para manipulção do css vindo do plug-in jquery datable */
 #tabelaCalculadora_wrapper {
     max-width: 700px !important;
@@ -423,7 +447,6 @@ div#tabelaCalculadora_wrapper .fg-toolbar.ui-toolbar.ui-widget-header.ui-helper-
 }
 
 table.display.dataTable.no-footer thead tr th {
-    background-color: rgb(36, 134, 44, 0.80) !important;
     color: #000000 !important;
     font-weight: normal !important;
     font-family: 'Lobster', cursive !important;
@@ -432,24 +455,24 @@ table.display.dataTable.no-footer thead tr th {
 
 /* rodape */
 .rodape {
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
-    width: 100%;
+    width: 100dwh;
     font-family: 'Lobster', cursive;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: rgba(57, 139, 187, 0.95);
     box-shadow: 0px 0px 10px 0px #000000;
-    margin-top: 200px;
     gap: 50px;
     font-size: 5px;
     padding: 5px;
     border: solid #252525 3px;
     border-radius: 10px 10px 0px 0px;
 }
+
 /* rodape */
 
 
@@ -619,6 +642,56 @@ table.display.dataTable.no-footer thead tr th {
     .card {
         width: 300px;
         margin: 0px 20px 0px 20px;
+    }
+
+}
+@media (min-width: 350px) and (max-width: 399px)  {
+    body {
+        background-size: 5000vh 5000vh;
+    }
+    .rodape{
+        width: 400px;
+    }
+}
+
+@media (min-width: 210px) and (max-width: 300px)  {
+    body {
+        background-size: 5000vh 5000vh;
+    }
+    .rodape{
+        width: 400px;
+    }
+}
+
+
+@media (min-width: 150px) and (max-width: 200px)  {
+    body {
+        background-size: 5000vh 5000vh;
+    }
+    .rodape{
+        width: 205px;
+    }
+}
+
+@media (min-width: 100px) and (max-width: 150px)  {
+    body {
+        background-size: 5000vh 5000vh;
+    }
+
+    .rodape{
+        width: 165px;
+    }
+
+}
+
+
+@media (min-width: 50px) and (max-width: 100px)  {
+    body {
+        background-size: 5000vh 5000vh;
+    }
+
+    .rodape{
+        width: 165px;
     }
 
 }
