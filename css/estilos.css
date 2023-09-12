@@ -14,6 +14,7 @@ header {
     z-index: 1;
 }
 
+/* class das mensagems dos botoes */
 .ui-tooltip {
     font-family: 'Lobster', cursive !important;
     background-color: rgba(58, 140, 187, 0.9) !important;
@@ -44,21 +45,17 @@ header {
     transition: all .35s;
 }
 
-.cabecalho:hover{
-   color: white;
+.cabecalho:hover {
+    color: white;
 }
 
 
-.imagem_Calculo{
+/* class imagem_Calculo */
+.imagem_Calculo {
     background-color: #00bf72;
     width: 30px;
 }
 
-
-
-/* .cabecalho:hover {
-    background: rgb(255, 255, 255,0.8);
-} */
 
 /* class orientandoElementos */
 .orientandoElementos {
@@ -453,7 +450,7 @@ table.display.dataTable.no-footer thead tr th {
     font-size: 17px !important;
 }
 
-/* rodape */
+/* class rodape */
 .rodape {
     position: relative;
     bottom: 0;
@@ -462,18 +459,91 @@ table.display.dataTable.no-footer thead tr th {
     width: 100dwh;
     font-family: 'Lobster', cursive;
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
     background-color: rgba(57, 139, 187, 0.95);
     box-shadow: 0px 0px 10px 0px #000000;
-    gap: 50px;
-    font-size: 5px;
-    padding: 5px;
+    font-size: 10px;
     border: solid #252525 3px;
     border-radius: 10px 10px 0px 0px;
 }
 
-/* rodape */
+
+/* class elemento_rodape */
+
+.elemento_rodape {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+/* class  botao_GitHub */
+.botao_GitHub {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background: #ff8800;
+    border: solid rgb(37, 37, 37) 2px;
+    box-shadow: 0px 3px 5px 0px #000000;
+    padding: 5px;
+    margin: 10px 10px 10px 10px;
+}
+
+
+.botao_GitHub:hover {
+    background: #ffffff;
+    transition: all .35s;
+    animation: moverbotaoContato 1s ease-in-out;
+    animation-delay: 1ms;
+}
+
+
+.botao_GitHub:active {
+    transform: scale(0.75);
+}
+
+/* class  botao_GitHub */
+.botao_linkedin {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background: #ff8800;
+    border: solid rgb(37, 37, 37) 2px;
+    box-shadow: 0px 3px 5px 0px #000000;
+    padding: 5px;
+    margin: 10px 10px 10px 10px;
+}
+
+
+.botao_linkedin:hover {
+    background: #ffffff;
+    transition: all .35s;
+    animation: moverbotaoContato 1s ease-in-out;
+    animation-delay: 1ms;
+}
+
+
+.botao_linkedin:active {
+    transform: scale(0.75);
+}
+
+
+@keyframes moverbotaoContato {
+    0% {
+        transform: translateY(5px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+
+}
+
 
 
 
@@ -608,6 +678,11 @@ table.display.dataTable.no-footer thead tr th {
         margin: 0px 20px 0px 20px;
     }
 
+    .rodape {
+        display: flex;
+        flex-direction: column;  
+    }
+
 }
 
 @media screen and (max-width: 800px) {
@@ -618,6 +693,11 @@ table.display.dataTable.no-footer thead tr th {
     .card {
         width: 500px;
         margin: 0px 20px 0px 20px;
+    }
+
+    .rodape {
+        display: flex;
+        flex-direction: column;  
     }
 
 }
@@ -632,6 +712,11 @@ table.display.dataTable.no-footer thead tr th {
         margin: 0px 20px 0px 20px;
     }
 
+    .rodape {
+        display: flex;
+        flex-direction: column;  
+    }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -644,54 +729,73 @@ table.display.dataTable.no-footer thead tr th {
         margin: 0px 20px 0px 20px;
     }
 
+    .rodape {
+        display: flex;
+        flex-direction: column;  
+    }
+
 }
-@media (min-width: 350px) and (max-width: 399px)  {
+
+@media (min-width: 350px) and (max-width: 399px) {
     body {
         background-size: 5000vh 5000vh;
     }
-    .rodape{
+
+    .rodape {
         width: 400px;
+        display: flex;
+        flex-direction: column;
     }
 }
 
-@media (min-width: 210px) and (max-width: 300px)  {
+@media (min-width: 210px) and (max-width: 300px) {
     body {
         background-size: 5000vh 5000vh;
     }
-    .rodape{
+
+    .rodape {
         width: 400px;
+        display: flex;
+        flex-direction: column;
     }
 }
 
 
-@media (min-width: 150px) and (max-width: 200px)  {
+@media (min-width: 150px) and (max-width: 200px) {
     body {
         background-size: 5000vh 5000vh;
     }
-    .rodape{
+
+    .rodape {
         width: 205px;
+        display: flex;
+        flex-direction: column;
     }
 }
 
-@media (min-width: 100px) and (max-width: 150px)  {
+@media (min-width: 100px) and (max-width: 150px) {
     body {
         background-size: 5000vh 5000vh;
     }
 
-    .rodape{
+    .rodape {
         width: 165px;
+        display: flex;
+        flex-direction: column;
     }
 
 }
 
 
-@media (min-width: 50px) and (max-width: 100px)  {
+@media (min-width: 50px) and (max-width: 100px) {
     body {
         background-size: 5000vh 5000vh;
     }
 
-    .rodape{
+    .rodape {
         width: 165px;
+        display: flex;
+        flex-direction: column;
     }
 
 }

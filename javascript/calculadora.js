@@ -69,60 +69,6 @@ $(document).ready(function () {
         }
     })
 
-    function formatadonumeros(num) {
-
-        var num_1 = Number(num.replace(/,/g, "").replace(/\./g, ""));//Pega a parte inteira do numero
-        var num_2 = Math.round((num - num_1) * 100);//Pega a parte nao inteira
-        var digits = [];
-        while (num_1 >= 1) {//Enquanto a parte inteira for maior igual que 1
-            var digit = num_1 % 10;
-            digits.push(digit);//Guarda cada digito neste array em ordem contraria
-            num_1 = Math.floor(num_1 / 10);
-        }
-        num_1 = "";
-        //Para todos os numeros no array adiciona "." a cada 3 numeros
-        for (var i = 0; i < digits.length; i++) {
-
-            if (i % 3 == 0 && i != 0) {
-                var comma = '.';
-            } else {
-                var comma = '';
-            }
-
-            num_1 = digits[i] + comma + num_1;
-
-        }
-        var num_with_comma = num_1
-        return num_with_comma;
-    }
-
-    function formatadonumeros2(num) {
-
-        var num_1 = num;//Pega a parte inteira do numero
-        var num_2 = Math.round((num - num_1) * 100);//Pega a parte nao inteira
-        var digits = [];
-        while (num_1 >= 1) {//Enquanto a parte inteira for maior igual que 1
-            var digit = num_1 % 10;
-            digits.push(digit);//Guarda cada digito neste array em ordem contraria
-            num_1 = Math.floor(num_1 / 10);
-        }
-        num_1 = "";
-        //Para todos os numeros no array adiciona "." a cada 3 numeros
-        for (var i = 0; i < digits.length; i++) {
-
-            if (i % 3 == 0 && i != 0) {
-                var comma = '.';
-            } else {
-                var comma = '';
-            }
-
-            num_1 = digits[i] + comma + num_1;
-
-        }
-        var num_with_comma = num_1
-        return num_with_comma;
-    }
-
     $('#botao_calculadora_limpar_historico').click(function (e) {
 
         document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -202,7 +148,7 @@ $(document).ready(function () {
                 document.querySelector(".primeirovalor").value = total
                 document.querySelector(".segundovalor").value = ""
                 let calculo = primeirovalor + " + " + segundovalor
-                addNewRow('Adição', calculo, total)
+                AdicionandoEquacaoAoHistorico('Adição', calculo, total)
             } else {
                 if (segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
                     /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
@@ -212,7 +158,7 @@ $(document).ready(function () {
                     document.querySelector(".primeirovalor").value = total
                     document.querySelector(".segundovalor").value = ""
                     let calculo = primeirovalor + " + " + segundovalor
-                    addNewRow('Adição', calculo, total)
+                    AdicionandoEquacaoAoHistorico('Adição', calculo, total)
                 } else {
                     if (segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
                         /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
@@ -222,7 +168,7 @@ $(document).ready(function () {
                         document.querySelector(".primeirovalor").value = total
                         document.querySelector(".segundovalor").value = ""
                         let calculo = primeirovalor + " + " + segundovalor
-                        addNewRow('Adição', calculo, total)
+                        AdicionandoEquacaoAoHistorico('Adição', calculo, total)
                     } else {
                         if (segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
                             /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
@@ -244,7 +190,7 @@ $(document).ready(function () {
                                 document.querySelector(".primeirovalor").value = valor
                                 document.querySelector(".segundovalor").value = ""
                                 let calculo = primeirovalor + " + " + segundovalor
-                                addNewRow('Adição', calculo, valor)
+                                AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
 
                             } else {
                                 if (segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
@@ -257,7 +203,7 @@ $(document).ready(function () {
                                     document.querySelector(".primeirovalor").value = valor
                                     document.querySelector(".segundovalor").value = ""
                                     let calculo = primeirovalor + " + " + segundovalor
-                                    addNewRow('Adição', calculo, valor)
+                                    AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
 
                                 } else {
                                     if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
@@ -270,7 +216,7 @@ $(document).ready(function () {
                                         document.querySelector(".primeirovalor").value = valor
                                         document.querySelector(".segundovalor").value = ""
                                         let calculo = primeirovalor + " + " + segundovalor
-                                        addNewRow('Adição', calculo, valor)
+                                        AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                     } else {
                                         if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                             /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
@@ -282,7 +228,7 @@ $(document).ready(function () {
                                             document.querySelector(".primeirovalor").value = valor
                                             document.querySelector(".segundovalor").value = ""
                                             let calculo = primeirovalor + " + " + segundovalor
-                                            addNewRow('Adição', calculo, valor)
+                                            AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
 
                                         } else {
                                             if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
@@ -295,7 +241,7 @@ $(document).ready(function () {
                                                 document.querySelector(".primeirovalor").value = valor
                                                 document.querySelector(".segundovalor").value = ""
                                                 let calculo = primeirovalor + " + " + segundovalor
-                                                addNewRow('Adição', calculo, valor)
+                                                AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                             } else {
                                                 if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
                                                     /* ambos os campos tem valor , ambos os campos tem ponto*/
@@ -307,7 +253,7 @@ $(document).ready(function () {
                                                     document.querySelector(".primeirovalor").value = valor
                                                     document.querySelector(".segundovalor").value = ""
                                                     let calculo = primeirovalor + " + " + segundovalor
-                                                    addNewRow('Adição', calculo, valor)
+                                                    AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                 } else {
                                                     if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                         /* ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
@@ -319,7 +265,7 @@ $(document).ready(function () {
                                                         document.querySelector(".primeirovalor").value = valor
                                                         document.querySelector(".segundovalor").value = ""
                                                         let calculo = primeirovalor + " + " + segundovalor
-                                                        addNewRow('Adição', calculo, valor)
+                                                        AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
 
                                                     } else {
                                                         if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -332,7 +278,7 @@ $(document).ready(function () {
                                                             document.querySelector(".primeirovalor").value = valor
                                                             document.querySelector(".segundovalor").value = ""
                                                             let calculo = primeirovalor + " + " + segundovalor
-                                                            addNewRow('Adição', calculo, valor)
+                                                            AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                         } else {
                                                             if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                                 /* ambos os campos tem valor , ambos os campos tem virgula*/
@@ -344,7 +290,7 @@ $(document).ready(function () {
                                                                 document.querySelector(".primeirovalor").value = valor
                                                                 document.querySelector(".segundovalor").value = ""
                                                                 let calculo = primeirovalor + " + " + segundovalor
-                                                                addNewRow('Adição', calculo, valor)
+                                                                AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                             } else {
                                                                 if (primeirovalor == "") {
                                                                     if (document.querySelector(".primeirovalor").style.backgroundColor == "" && segundovalor == "") {
@@ -370,7 +316,7 @@ $(document).ready(function () {
                                                                         document.querySelector(".primeirovalor").value = valor
                                                                         document.querySelector(".segundovalor").value = ""
                                                                         let calculo = primeirovalor + " + " + segundovalor
-                                                                        addNewRow('Adição', calculo, valor)
+                                                                        AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                                     } else {
                                                                         if (document.querySelector(".primeirovalor").style.backgroundColor != "rgba(8, 241, 0, 0.95)" && primeirovalor != "") {
                                                                             document.querySelector(".primeirovalor").style.backgroundColor = "#08f100f2"
@@ -453,7 +399,7 @@ $(document).ready(function () {
                 document.querySelector(".primeirovalor").value = total
                 document.querySelector(".segundovalor").value = ""
                 let calculo = primeirovalor + " - " + segundovalor
-                addNewRow('Subtração', calculo, total)
+                AdicionandoEquacaoAoHistorico('Subtração', calculo, total)
             } else {
                 if (segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
                     /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
@@ -463,7 +409,7 @@ $(document).ready(function () {
                     document.querySelector(".primeirovalor").value = total
                     document.querySelector(".segundovalor").value = ""
                     let calculo = primeirovalor + " - " + segundovalor
-                    addNewRow('Subtração', calculo, total)
+                    AdicionandoEquacaoAoHistorico('Subtração', calculo, total)
                 } else {
                     if (segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
                         /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
@@ -473,7 +419,7 @@ $(document).ready(function () {
                         document.querySelector(".primeirovalor").value = total
                         document.querySelector(".segundovalor").value = ""
                         let calculo = primeirovalor + " - " + segundovalor
-                        addNewRow('Subtração', calculo, total)
+                        AdicionandoEquacaoAoHistorico('Subtração', calculo, total)
                     } else {
                         if (segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
                             /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
@@ -495,7 +441,7 @@ $(document).ready(function () {
                                 document.querySelector(".primeirovalor").value = valor
                                 document.querySelector(".segundovalor").value = ""
                                 let calculo = primeirovalor + " - " + segundovalor
-                                addNewRow('Subtração', calculo, valor)
+                                AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
 
                             } else {
                                 if (segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
@@ -508,7 +454,7 @@ $(document).ready(function () {
                                     document.querySelector(".primeirovalor").value = valor
                                     document.querySelector(".segundovalor").value = ""
                                     let calculo = primeirovalor + " - " + segundovalor
-                                    addNewRow('Subtração', calculo, valor)
+                                    AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
 
                                 } else {
                                     if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
@@ -521,7 +467,7 @@ $(document).ready(function () {
                                         document.querySelector(".primeirovalor").value = valor
                                         document.querySelector(".segundovalor").value = ""
                                         let calculo = primeirovalor + " - " + segundovalor
-                                        addNewRow('Subtração', calculo, valor)
+                                        AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                     } else {
                                         if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                             /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
@@ -533,7 +479,7 @@ $(document).ready(function () {
                                             document.querySelector(".primeirovalor").value = valor
                                             document.querySelector(".segundovalor").value = ""
                                             let calculo = primeirovalor + " - " + segundovalor
-                                            addNewRow('Subtração', calculo, valor)
+                                            AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
 
                                         } else {
                                             if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
@@ -546,7 +492,7 @@ $(document).ready(function () {
                                                 document.querySelector(".primeirovalor").value = valor
                                                 document.querySelector(".segundovalor").value = ""
                                                 let calculo = primeirovalor + " - " + segundovalor
-                                                addNewRow('Subtração', calculo, valor)
+                                                AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                             } else {
                                                 if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
                                                     /* ambos os campos tem valor , ambos os campos tem ponto*/
@@ -558,7 +504,7 @@ $(document).ready(function () {
                                                     document.querySelector(".primeirovalor").value = valor
                                                     document.querySelector(".segundovalor").value = ""
                                                     let calculo = primeirovalor + " - " + segundovalor
-                                                    addNewRow('Subtração', calculo, valor)
+                                                    AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                 } else {
                                                     if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                         /* ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
@@ -570,7 +516,7 @@ $(document).ready(function () {
                                                         document.querySelector(".primeirovalor").value = valor
                                                         document.querySelector(".segundovalor").value = ""
                                                         let calculo = primeirovalor + " - " + segundovalor
-                                                        addNewRow('Subtração', calculo, valor)
+                                                        AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
 
                                                     } else {
                                                         if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -583,7 +529,7 @@ $(document).ready(function () {
                                                             document.querySelector(".primeirovalor").value = valor
                                                             document.querySelector(".segundovalor").value = ""
                                                             let calculo = primeirovalor + " - " + segundovalor
-                                                            addNewRow('Subtração', calculo, valor)
+                                                            AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                         } else {
                                                             if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                                 /* ambos os campos tem valor , ambos os campos tem virgula*/
@@ -595,7 +541,7 @@ $(document).ready(function () {
                                                                 document.querySelector(".primeirovalor").value = valor
                                                                 document.querySelector(".segundovalor").value = ""
                                                                 let calculo = primeirovalor + " - " + segundovalor
-                                                                addNewRow('Subtração', calculo, valor)
+                                                                AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                             } else {
                                                                 if (primeirovalor == "") {
                                                                     if (document.querySelector(".primeirovalor").style.backgroundColor == "" && segundovalor == "") {
@@ -621,7 +567,7 @@ $(document).ready(function () {
                                                                         document.querySelector(".primeirovalor").value = valor
                                                                         document.querySelector(".segundovalor").value = ""
                                                                         let calculo = primeirovalor + " - " + segundovalor
-                                                                        addNewRow('Subtração', calculo, valor)
+                                                                        AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                     } else {
                                                                         if (document.querySelector(".primeirovalor").style.backgroundColor != "rgba(241, 0, 0, 0.95)" && primeirovalor != "") {
                                                                             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
@@ -703,7 +649,7 @@ $(document).ready(function () {
                 document.querySelector(".primeirovalor").value = total
                 document.querySelector(".segundovalor").value = ""
                 let calculo = primeirovalor + " x " + segundovalor
-                addNewRow('Multiplicação', calculo, total)
+                AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
             } else {
                 if (segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
                     /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
@@ -713,7 +659,7 @@ $(document).ready(function () {
                     document.querySelector(".primeirovalor").value = total
                     document.querySelector(".segundovalor").value = ""
                     let calculo = primeirovalor + " x " + segundovalor
-                    addNewRow('Multiplicação', calculo, total)
+                    AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
                 } else {
                     if (segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
                         /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
@@ -723,7 +669,7 @@ $(document).ready(function () {
                         document.querySelector(".primeirovalor").value = total
                         document.querySelector(".segundovalor").value = ""
                         let calculo = primeirovalor + " x " + segundovalor
-                        addNewRow('Multiplicação', calculo, total)
+                        AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
                     } else {
                         if (segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
                             /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
@@ -745,7 +691,7 @@ $(document).ready(function () {
                                 document.querySelector(".primeirovalor").value = valor
                                 document.querySelector(".segundovalor").value = ""
                                 let calculo = primeirovalor + " x " + segundovalor
-                                addNewRow('Multiplicação', calculo, valor)
+                                AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
 
                             } else {
                                 if (segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
@@ -758,7 +704,7 @@ $(document).ready(function () {
                                     document.querySelector(".primeirovalor").value = valor
                                     document.querySelector(".segundovalor").value = ""
                                     let calculo = primeirovalor + " x " + segundovalor
-                                    addNewRow('Multiplicação', calculo, valor)
+                                    AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
 
                                 } else {
                                     if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
@@ -771,7 +717,7 @@ $(document).ready(function () {
                                         document.querySelector(".primeirovalor").value = valor
                                         document.querySelector(".segundovalor").value = ""
                                         let calculo = primeirovalor + " x " + segundovalor
-                                        addNewRow('Multiplicação', calculo, valor)
+                                        AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                     } else {
                                         if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                             /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
@@ -783,7 +729,7 @@ $(document).ready(function () {
                                             document.querySelector(".primeirovalor").value = valor
                                             document.querySelector(".segundovalor").value = ""
                                             let calculo = primeirovalor + " x " + segundovalor
-                                            addNewRow('Multiplicação', calculo, valor)
+                                            AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
 
                                         } else {
                                             if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
@@ -796,7 +742,7 @@ $(document).ready(function () {
                                                 document.querySelector(".primeirovalor").value = valor
                                                 document.querySelector(".segundovalor").value = ""
                                                 let calculo = primeirovalor + " x " + segundovalor
-                                                addNewRow('Multiplicação', calculo, valor)
+                                                AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                             } else {
                                                 if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
                                                     /* ambos os campos tem valor , ambos os campos tem ponto*/
@@ -809,14 +755,14 @@ $(document).ready(function () {
                                                         document.querySelector(".primeirovalor").value = total
                                                         document.querySelector(".segundovalor").value = ""
                                                         let calculo = primeirovalor + " x " + segundovalor
-                                                        addNewRow('Multiplicação', calculo, total)
+                                                        AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
                                                     } else {
-                                                        let valorFormatodo = formatadonumeros2(valor)
+                                                        let valorFormatodo = formatadonumerosSemTratativo(valor)
                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
                                                         document.querySelector(".primeirovalor").value = valorFormatodo
                                                         document.querySelector(".segundovalor").value = ""
                                                         let calculo = primeirovalor + " x " + segundovalor
-                                                        addNewRow('Multiplicação', calculo, valorFormatodo)
+                                                        AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valorFormatodo)
                                                     }
                                                 } else {
                                                     if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -829,7 +775,7 @@ $(document).ready(function () {
                                                         document.querySelector(".primeirovalor").value = valor
                                                         document.querySelector(".segundovalor").value = ""
                                                         let calculo = primeirovalor + " x " + segundovalor
-                                                        addNewRow('Multiplicação', calculo, valor)
+                                                        AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
 
                                                     } else {
                                                         if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -842,7 +788,7 @@ $(document).ready(function () {
                                                             document.querySelector(".primeirovalor").value = valor
                                                             document.querySelector(".segundovalor").value = ""
                                                             let calculo = primeirovalor + " x " + segundovalor
-                                                            addNewRow('Multiplicação', calculo, valor)
+                                                            AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                         } else {
                                                             if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                                 /* ambos os campos tem valor , ambos os campos tem virgula*/
@@ -854,7 +800,7 @@ $(document).ready(function () {
                                                                 document.querySelector(".primeirovalor").value = valor
                                                                 document.querySelector(".segundovalor").value = ""
                                                                 let calculo = primeirovalor + " x " + segundovalor
-                                                                addNewRow('Multiplicação', calculo, valor)
+                                                                AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                             } else {
                                                                 if (primeirovalor == "") {
                                                                     if (document.querySelector(".primeirovalor").style.backgroundColor == "" && segundovalor == "") {
@@ -880,7 +826,7 @@ $(document).ready(function () {
                                                                         document.querySelector(".primeirovalor").value = valor
                                                                         document.querySelector(".segundovalor").value = ""
                                                                         let calculo = primeirovalor + " x " + segundovalor
-                                                                        addNewRow('Multiplicação', calculo, valor)
+                                                                        AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                     } else {
                                                                         if (document.querySelector(".primeirovalor").style.backgroundColor != "rgba(255, 238, 0, 0.95)" && primeirovalor != "") {
                                                                             document.querySelector(".primeirovalor").style.backgroundColor = "#ffee00f2"
@@ -959,7 +905,7 @@ $(document).ready(function () {
                 document.querySelector(".primeirovalor").value = total
                 document.querySelector(".segundovalor").value = ""
                 let calculo = primeirovalor + " / " + segundovalor
-                addNewRow('Divisão', calculo, total)
+                AdicionandoEquacaoAoHistorico('Divisão', calculo, total)
             } else {
                 if (segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
                     /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
@@ -969,7 +915,7 @@ $(document).ready(function () {
                     document.querySelector(".primeirovalor").value = total
                     document.querySelector(".segundovalor").value = ""
                     let calculo = primeirovalor + " / " + segundovalor
-                    addNewRow('Divisão', calculo, total)
+                    AdicionandoEquacaoAoHistorico('Divisão', calculo, total)
                 } else {
                     if (segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
                         /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
@@ -980,7 +926,7 @@ $(document).ready(function () {
                         document.querySelector(".primeirovalor").value = valor
                         document.querySelector(".segundovalor").value = ""
                         let calculo = primeirovalor + " / " + segundovalor
-                        addNewRow('Divisão', calculo, valor)
+                        AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
                     } else {
                         if (segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
                             /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
@@ -1002,7 +948,7 @@ $(document).ready(function () {
                                 document.querySelector(".primeirovalor").value = valor
                                 document.querySelector(".segundovalor").value = ""
                                 let calculo = primeirovalor + " / " + segundovalor
-                                addNewRow('Divisão', calculo, valor)
+                                AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
 
                             } else {
                                 if (segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
@@ -1015,7 +961,7 @@ $(document).ready(function () {
                                     document.querySelector(".primeirovalor").value = valor
                                     document.querySelector(".segundovalor").value = ""
                                     let calculo = primeirovalor + " / " + segundovalor
-                                    addNewRow('Divisão', calculo, valor)
+                                    AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
 
                                 } else {
                                     if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
@@ -1028,7 +974,7 @@ $(document).ready(function () {
                                         document.querySelector(".primeirovalor").value = valor
                                         document.querySelector(".segundovalor").value = ""
                                         let calculo = primeirovalor + " / " + segundovalor
-                                        addNewRow('Divisão', calculo, valor)
+                                        AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
                                     } else {
                                         if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                             /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
@@ -1040,7 +986,7 @@ $(document).ready(function () {
                                             document.querySelector(".primeirovalor").value = valor
                                             document.querySelector(".segundovalor").value = ""
                                             let calculo = primeirovalor + " / " + segundovalor
-                                            addNewRow('Divisão', calculo, valor)
+                                            AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
 
                                         } else {
                                             if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
@@ -1053,7 +999,7 @@ $(document).ready(function () {
                                                 document.querySelector(".primeirovalor").value = valor
                                                 document.querySelector(".segundovalor").value = ""
                                                 let calculo = primeirovalor + " / " + segundovalor
-                                                addNewRow('Divisão', calculo, valor)
+                                                AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
                                             } else {
                                                 if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
                                                     /* ambos os campos tem valor , ambos os campos tem ponto*/
@@ -1066,14 +1012,14 @@ $(document).ready(function () {
                                                         document.querySelector(".primeirovalor").value = total
                                                         document.querySelector(".segundovalor").value = ""
                                                         let calculo = primeirovalor + " / " + segundovalor
-                                                        addNewRow('Divisão', calculo, total)
+                                                        AdicionandoEquacaoAoHistorico('Divisão', calculo, total)
                                                     } else {
-                                                        let valorFormatodo = formatadonumeros2(valor)
+                                                        let valorFormatodo = formatadonumerosSemTratativo(valor)
                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#00f7fff2"
                                                         document.querySelector(".primeirovalor").value = valorFormatodo
                                                         document.querySelector(".segundovalor").value = ""
                                                         let calculo = primeirovalor + " / " + segundovalor
-                                                        addNewRow('Divisão', calculo, valorFormatodo)
+                                                        AdicionandoEquacaoAoHistorico('Divisão', calculo, valorFormatodo)
                                                     }
                                                 } else {
                                                     if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -1095,7 +1041,7 @@ $(document).ready(function () {
                                                             document.querySelector(".primeirovalor").value = valorconvertido
                                                             document.querySelector(".segundovalor").value = ""
                                                             let calculo = primeirovalor + " / " + segundovalor
-                                                            addNewRow('Divisão', calculo, valorconvertido)
+                                                            AdicionandoEquacaoAoHistorico('Divisão', calculo, valorconvertido)
                                                         }
                                                     } else {
                                                         if (segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -1117,7 +1063,7 @@ $(document).ready(function () {
                                                                 document.querySelector(".primeirovalor").value = valorconvertido
                                                                 document.querySelector(".segundovalor").value = ""
                                                                 let calculo = primeirovalor + " / " + segundovalor
-                                                                addNewRow('Divisão', calculo, valorconvertido)
+                                                                AdicionandoEquacaoAoHistorico('Divisão', calculo, valorconvertido)
                                                             }
 
                                                         } else {
@@ -1140,7 +1086,7 @@ $(document).ready(function () {
                                                                     document.querySelector(".primeirovalor").value = valorconvertido
                                                                     document.querySelector(".segundovalor").value = ""
                                                                     let calculo = primeirovalor + " / " + segundovalor
-                                                                    addNewRow('Divisão', calculo, valorconvertido)
+                                                                    AdicionandoEquacaoAoHistorico('Divisão', calculo, valorconvertido)
                                                                 }
 
                                                             } else {
@@ -1177,7 +1123,7 @@ $(document).ready(function () {
                                                                             document.querySelector(".primeirovalor").value = valorconvertido
                                                                             document.querySelector(".segundovalor").value = ""
                                                                             let calculo = primeirovalor + " / " + segundovalor
-                                                                            addNewRow('Divisão', calculo, valorconvertido)
+                                                                            AdicionandoEquacaoAoHistorico('Divisão', calculo, valorconvertido)
                                                                         }
 
                                                                     } else {
@@ -1257,7 +1203,7 @@ $(document).ready(function () {
                 document.querySelector(".primeirovalor").value = ""
                 document.querySelector(".segundovalor").value = ""
                 let calculo = primeirovalor + " + " + segundovalor
-                addNewRow('Adição', calculo, total)
+                AdicionandoEquacaoAoHistorico('Adição', calculo, total)
             } else {
                 if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
                     /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
@@ -1267,7 +1213,7 @@ $(document).ready(function () {
                     document.querySelector(".primeirovalor").value = ""
                     document.querySelector(".segundovalor").value = ""
                     let calculo = primeirovalor + " + " + segundovalor
-                    addNewRow('Adição', calculo, total)
+                    AdicionandoEquacaoAoHistorico('Adição', calculo, total)
                 } else {
                     if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
                         /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
@@ -1277,7 +1223,7 @@ $(document).ready(function () {
                         document.querySelector(".primeirovalor").value = ""
                         document.querySelector(".segundovalor").value = ""
                         let calculo = primeirovalor + " + " + segundovalor
-                        addNewRow('Adição', calculo, total)
+                        AdicionandoEquacaoAoHistorico('Adição', calculo, total)
                     } else {
                         if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
                             /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
@@ -1299,7 +1245,7 @@ $(document).ready(function () {
                                 document.querySelector(".primeirovalor").value = ""
                                 document.querySelector(".segundovalor").value = ""
                                 let calculo = primeirovalor + " + " + segundovalor
-                                addNewRow('Adição', calculo, valor)
+                                AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
 
                             } else {
                                 if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
@@ -1312,7 +1258,7 @@ $(document).ready(function () {
                                     document.querySelector(".primeirovalor").value = ""
                                     document.querySelector(".segundovalor").value = ""
                                     let calculo = primeirovalor + " + " + segundovalor
-                                    addNewRow('Adição', calculo, valor)
+                                    AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
 
                                 } else {
                                     if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
@@ -1325,7 +1271,7 @@ $(document).ready(function () {
                                         document.querySelector(".primeirovalor").value = ""
                                         document.querySelector(".segundovalor").value = ""
                                         let calculo = primeirovalor + " + " + segundovalor
-                                        addNewRow('Adição', calculo, valor)
+                                        AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                     } else {
                                         if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                             /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
@@ -1337,7 +1283,7 @@ $(document).ready(function () {
                                             document.querySelector(".primeirovalor").value = ""
                                             document.querySelector(".segundovalor").value = ""
                                             let calculo = primeirovalor + " + " + segundovalor
-                                            addNewRow('Adição', calculo, valor)
+                                            AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
 
                                         } else {
                                             if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
@@ -1350,7 +1296,7 @@ $(document).ready(function () {
                                                 document.querySelector(".primeirovalor").value = ""
                                                 document.querySelector(".segundovalor").value = ""
                                                 let calculo = primeirovalor + " + " + segundovalor
-                                                addNewRow('Adição', calculo, valor)
+                                                AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                             } else {
                                                 if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
                                                     /* ambos os campos tem valor , ambos os campos tem ponto*/
@@ -1362,7 +1308,7 @@ $(document).ready(function () {
                                                     document.querySelector(".primeirovalor").value = ""
                                                     document.querySelector(".segundovalor").value = ""
                                                     let calculo = primeirovalor + " + " + segundovalor
-                                                    addNewRow('Adição', calculo, valor)
+                                                    AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                 } else {
                                                     if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                         /* ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
@@ -1374,7 +1320,7 @@ $(document).ready(function () {
                                                         document.querySelector(".primeirovalor").value = ""
                                                         document.querySelector(".segundovalor").value = ""
                                                         let calculo = primeirovalor + " + " + segundovalor
-                                                        addNewRow('Adição', calculo, valor)
+                                                        AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
 
                                                     } else {
                                                         if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -1387,7 +1333,7 @@ $(document).ready(function () {
                                                             document.querySelector(".primeirovalor").value = ""
                                                             document.querySelector(".segundovalor").value = ""
                                                             let calculo = primeirovalor + " + " + segundovalor
-                                                            addNewRow('Adição', calculo, valor)
+                                                            AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                         } else {
                                                             if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                                 /* ambos os campos tem valor , ambos os campos tem virgula*/
@@ -1399,7 +1345,7 @@ $(document).ready(function () {
                                                                 document.querySelector(".primeirovalor").value = ""
                                                                 document.querySelector(".segundovalor").value = ""
                                                                 let calculo = primeirovalor + " + " + segundovalor
-                                                                addNewRow('Adição', calculo, valor)
+                                                                AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                             } else {
                                                                 if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                                                     /* ambos os valores são numeros inteiros*/
@@ -1411,7 +1357,7 @@ $(document).ready(function () {
                                                                     document.querySelector(".primeirovalor").value = ""
                                                                     document.querySelector(".segundovalor").value = ""
                                                                     let calculo = primeirovalor + " + " + segundovalor
-                                                                    addNewRow('Adição', calculo, valor)
+                                                                    AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                                 } else {
                                                                     if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulaprimeirovalor == true) {
                                                                         /* ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
@@ -1430,7 +1376,7 @@ $(document).ready(function () {
                                                                             document.querySelector(".primeirovalor").value = ""
                                                                             document.querySelector(".segundovalor").value = ""
                                                                             let calculo = primeirovalor + " - " + segundovalor
-                                                                            addNewRow('Subtração', calculo, total)
+                                                                            AdicionandoEquacaoAoHistorico('Subtração', calculo, total)
                                                                         } else {
                                                                             if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
                                                                                 /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
@@ -1440,7 +1386,7 @@ $(document).ready(function () {
                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                 let calculo = primeirovalor + " - " + segundovalor
-                                                                                addNewRow('Subtração', calculo, total)
+                                                                                AdicionandoEquacaoAoHistorico('Subtração', calculo, total)
                                                                             } else {
                                                                                 if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
                                                                                     /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
@@ -1450,7 +1396,7 @@ $(document).ready(function () {
                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                     let calculo = primeirovalor + " - " + segundovalor
-                                                                                    addNewRow('Subtração', calculo, total)
+                                                                                    AdicionandoEquacaoAoHistorico('Subtração', calculo, total)
                                                                                 } else {
                                                                                     if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
                                                                                         /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
@@ -1472,7 +1418,7 @@ $(document).ready(function () {
                                                                                             document.querySelector(".primeirovalor").value = ""
                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                             let calculo = primeirovalor + " - " + segundovalor
-                                                                                            addNewRow('Subtração', calculo, valor)
+                                                                                            AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
 
                                                                                         } else {
                                                                                             if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
@@ -1485,7 +1431,7 @@ $(document).ready(function () {
                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                 let calculo = primeirovalor + " - " + segundovalor
-                                                                                                addNewRow('Subtração', calculo, valor)
+                                                                                                AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
 
                                                                                             } else {
                                                                                                 if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
@@ -1498,7 +1444,7 @@ $(document).ready(function () {
                                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                     let calculo = primeirovalor + " - " + segundovalor
-                                                                                                    addNewRow('Subtração', calculo, valor)
+                                                                                                    AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                 } else {
                                                                                                     if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                                                                                         /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
@@ -1510,7 +1456,7 @@ $(document).ready(function () {
                                                                                                         document.querySelector(".primeirovalor").value = ""
                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                         let calculo = primeirovalor + " - " + segundovalor
-                                                                                                        addNewRow('Subtração', calculo, valor)
+                                                                                                        AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
 
                                                                                                     } else {
                                                                                                         if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
@@ -1523,7 +1469,7 @@ $(document).ready(function () {
                                                                                                             document.querySelector(".primeirovalor").value = ""
                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                             let calculo = primeirovalor + " - " + segundovalor
-                                                                                                            addNewRow('Subtração', calculo, valor)
+                                                                                                            AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                         } else {
                                                                                                             if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
                                                                                                                 /* ambos os campos tem valor , ambos os campos tem ponto*/
@@ -1535,7 +1481,7 @@ $(document).ready(function () {
                                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                 let calculo = primeirovalor + " - " + segundovalor
-                                                                                                                addNewRow('Subtração', calculo, valor)
+                                                                                                                AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                             } else {
                                                                                                                 if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                                                                                     /* ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
@@ -1547,7 +1493,7 @@ $(document).ready(function () {
                                                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                     let calculo = primeirovalor + " - " + segundovalor
-                                                                                                                    addNewRow('Subtração', calculo, valor)
+                                                                                                                    AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
 
                                                                                                                 } else {
                                                                                                                     if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -1560,7 +1506,7 @@ $(document).ready(function () {
                                                                                                                         document.querySelector(".primeirovalor").value = ""
                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                         let calculo = primeirovalor + " - " + segundovalor
-                                                                                                                        addNewRow('Subtração', calculo, valor)
+                                                                                                                        AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                                     } else {
                                                                                                                         if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                                                                                             /* ambos os campos tem valor , ambos os campos tem virgula*/
@@ -1572,7 +1518,7 @@ $(document).ready(function () {
                                                                                                                             document.querySelector(".primeirovalor").value = ""
                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                             let calculo = primeirovalor + " - " + segundovalor
-                                                                                                                            addNewRow('Subtração', calculo, valor)
+                                                                                                                            AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                                         } else {
                                                                                                                             if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                                                                                                                 /* ambos os valores são numeros inteiros*/
@@ -1584,7 +1530,7 @@ $(document).ready(function () {
                                                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                 let calculo = primeirovalor + " - " + segundovalor
-                                                                                                                                addNewRow('Subtração', calculo, valor)
+                                                                                                                                AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                                             } else {
                                                                                                                                 if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                                                                                                                     /* ambos os valores são numeros inteiros*/
@@ -1596,7 +1542,7 @@ $(document).ready(function () {
                                                                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                     let calculo = primeirovalor + " - " + segundovalor
-                                                                                                                                    addNewRow('Subtração', calculo, valor)
+                                                                                                                                    AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                                                 } else {
                                                                                                                                     if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulaprimeirovalor == true) {
                                                                                                                                         /* ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
@@ -1615,7 +1561,7 @@ $(document).ready(function () {
                                                                                                                                             document.querySelector(".primeirovalor").value = ""
                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                             let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                            addNewRow('Multiplicação', calculo, total)
+                                                                                                                                            AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
                                                                                                                                         } else {
                                                                                                                                             if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
                                                                                                                                                 /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
@@ -1625,7 +1571,7 @@ $(document).ready(function () {
                                                                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                 let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                addNewRow('Multiplicação', calculo, total)
+                                                                                                                                                AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
                                                                                                                                             } else {
                                                                                                                                                 if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
                                                                                                                                                     /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
@@ -1635,7 +1581,7 @@ $(document).ready(function () {
                                                                                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                     let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                    addNewRow('Multiplicação', calculo, total)
+                                                                                                                                                    AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
                                                                                                                                                 } else {
                                                                                                                                                     if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
                                                                                                                                                         /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
@@ -1657,7 +1603,7 @@ $(document).ready(function () {
                                                                                                                                                             document.querySelector(".primeirovalor").value = ""
                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                             let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                            addNewRow('Multiplicação', calculo, valor)
+                                                                                                                                                            AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
 
                                                                                                                                                         } else {
                                                                                                                                                             if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
@@ -1670,7 +1616,7 @@ $(document).ready(function () {
                                                                                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                 let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                                addNewRow('Multiplicação', calculo, valor)
+                                                                                                                                                                AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
 
                                                                                                                                                             } else {
                                                                                                                                                                 if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
@@ -1683,7 +1629,7 @@ $(document).ready(function () {
                                                                                                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                     let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                                    addNewRow('Multiplicação', calculo, valor)
+                                                                                                                                                                    AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                                                                                                                 } else {
                                                                                                                                                                     if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                                                                                                                                                         /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
@@ -1695,7 +1641,7 @@ $(document).ready(function () {
                                                                                                                                                                         document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                         let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                                        addNewRow('Multiplicação', calculo, valor)
+                                                                                                                                                                        AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
 
                                                                                                                                                                     } else {
                                                                                                                                                                         if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
@@ -1708,7 +1654,7 @@ $(document).ready(function () {
                                                                                                                                                                             document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                                             let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                                            addNewRow('Multiplicação', calculo, valor)
+                                                                                                                                                                            AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                                                                                                                         } else {
                                                                                                                                                                             if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
                                                                                                                                                                                 /* ambos os campos tem valor , ambos os campos tem ponto*/
@@ -1721,14 +1667,14 @@ $(document).ready(function () {
                                                                                                                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                     let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                                                    addNewRow('Multiplicação', calculo, total)
+                                                                                                                                                                                    AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
                                                                                                                                                                                 } else {
-                                                                                                                                                                                    let valorFormatodo = formatadonumeros2(valor)
+                                                                                                                                                                                    let valorFormatodo = formatadonumerosSemTratativo(valor)
                                                                                                                                                                                     document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                                                                                                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                     let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                                                    addNewRow('Multiplicação', calculo, valorFormatodo)
+                                                                                                                                                                                    AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valorFormatodo)
                                                                                                                                                                                 }
                                                                                                                                                                             } else {
                                                                                                                                                                                 if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -1741,7 +1687,7 @@ $(document).ready(function () {
                                                                                                                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                     let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                                                    addNewRow('Multiplicação', calculo, valor)
+                                                                                                                                                                                    AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
 
                                                                                                                                                                                 } else {
                                                                                                                                                                                     if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -1754,7 +1700,7 @@ $(document).ready(function () {
                                                                                                                                                                                         document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                         let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                                                        addNewRow('Multiplicação', calculo, valor)
+                                                                                                                                                                                        AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                                                                                                                                     } else {
                                                                                                                                                                                         if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
                                                                                                                                                                                             /* ambos os campos tem valor , ambos os campos tem virgula*/
@@ -1766,7 +1712,7 @@ $(document).ready(function () {
                                                                                                                                                                                             document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                             let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                                                            addNewRow('Multiplicação', calculo, valor)
+                                                                                                                                                                                            AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                                                                                                                                         } else {
                                                                                                                                                                                             if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                                                                                                                                                                                 /* ambos os valores são numeros inteiros*/
@@ -1778,7 +1724,7 @@ $(document).ready(function () {
                                                                                                                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                 let calculo = primeirovalor + " x " + segundovalor
-                                                                                                                                                                                                addNewRow('Multiplicação', calculo, valor)
+                                                                                                                                                                                                AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                                                                                                                                             } else {
                                                                                                                                                                                                 if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulaprimeirovalor == true) {
                                                                                                                                                                                                     /* ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
@@ -1798,7 +1744,7 @@ $(document).ready(function () {
                                                                                                                                                                                                         document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                         let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                        addNewRow('Divisão', calculo, total)
+                                                                                                                                                                                                        AdicionandoEquacaoAoHistorico('Divisão', calculo, total)
                                                                                                                                                                                                     } else {
                                                                                                                                                                                                         if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
                                                                                                                                                                                                             /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
@@ -1808,7 +1754,7 @@ $(document).ready(function () {
                                                                                                                                                                                                             document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                             let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                            addNewRow('Divisão', calculo, total)
+                                                                                                                                                                                                            AdicionandoEquacaoAoHistorico('Divisão', calculo, total)
                                                                                                                                                                                                         } else {
                                                                                                                                                                                                             if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
                                                                                                                                                                                                                 /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
@@ -1819,7 +1765,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                 let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                addNewRow('Divisão', calculo, valor)
+                                                                                                                                                                                                                AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
                                                                                                                                                                                                             } else {
                                                                                                                                                                                                                 if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
                                                                                                                                                                                                                     /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
@@ -1841,7 +1787,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                         document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                         let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                        addNewRow('Divisão', calculo, valor)
+                                                                                                                                                                                                                        AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
 
                                                                                                                                                                                                                     } else {
                                                                                                                                                                                                                         if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
@@ -1854,7 +1800,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                             document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                             let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                            addNewRow('Divisão', calculo, valor)
+                                                                                                                                                                                                                            AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
 
                                                                                                                                                                                                                         } else {
                                                                                                                                                                                                                             if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
@@ -1867,7 +1813,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                 let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                addNewRow('Divisão', calculo, valor)
+                                                                                                                                                                                                                                AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
                                                                                                                                                                                                                             } else {
                                                                                                                                                                                                                                 if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
                                                                                                                                                                                                                                     /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
@@ -1879,7 +1825,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                     let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                    addNewRow('Divisão', calculo, valor)
+                                                                                                                                                                                                                                    AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
 
                                                                                                                                                                                                                                 } else {
                                                                                                                                                                                                                                     if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
@@ -1892,7 +1838,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                         document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                         let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                        addNewRow('Divisão', calculo, valor)
+                                                                                                                                                                                                                                        AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
                                                                                                                                                                                                                                     } else {
                                                                                                                                                                                                                                         if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
                                                                                                                                                                                                                                             /* ambos os campos tem valor , ambos os campos tem ponto*/
@@ -1905,14 +1851,14 @@ $(document).ready(function () {
                                                                                                                                                                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                                 let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                                addNewRow('Divisão', calculo, total)
+                                                                                                                                                                                                                                                AdicionandoEquacaoAoHistorico('Divisão', calculo, total)
                                                                                                                                                                                                                                             } else {
-                                                                                                                                                                                                                                                let valorFormatodo = formatadonumeros2(valor)
+                                                                                                                                                                                                                                                let valorFormatodo = formatadonumerosSemTratativo(valor)
                                                                                                                                                                                                                                                 document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                                                                                                                                                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                                 let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                                addNewRow('Divisão', calculo, valorFormatodo)
+                                                                                                                                                                                                                                                AdicionandoEquacaoAoHistorico('Divisão', calculo, valorFormatodo)
                                                                                                                                                                                                                                             }
                                                                                                                                                                                                                                         } else {
                                                                                                                                                                                                                                             if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
@@ -1934,7 +1880,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                                     document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                                     document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                                     let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                                    addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                    AdicionandoEquacaoAoHistorico('Divisão', calculo, valorconvertido)
                                                                                                                                                                                                                                                 }
 
                                                                                                                                                                                                                                             } else {
@@ -1957,7 +1903,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                                         document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                                         let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                                        addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                        AdicionandoEquacaoAoHistorico('Divisão', calculo, valorconvertido)
                                                                                                                                                                                                                                                     }
 
                                                                                                                                                                                                                                                 } else {
@@ -1980,7 +1926,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                                             document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                                             document.querySelector(".segundovalor").value = ""
                                                                                                                                                                                                                                                             let calculo = primeirovalor + " / " + segundovalor
-                                                                                                                                                                                                                                                            addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                            AdicionandoEquacaoAoHistorico('Divisão', calculo, valorconvertido)
                                                                                                                                                                                                                                                         }
 
                                                                                                                                                                                                                                                     } else {
@@ -2003,7 +1949,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                                                 document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                                                                                                                                                                                                                                                 document.querySelector(".primeirovalor").value = ""
                                                                                                                                                                                                                                                                 document.querySelector(".segundovalor").value = ""
-                                                                                                                                                                                                                                                                addNewRow('Divisão', calculo, valorconvertido)
+                                                                                                                                                                                                                                                                AdicionandoEquacaoAoHistorico('Divisão', calculo, valorconvertido)
                                                                                                                                                                                                                                                             }
 
                                                                                                                                                                                                                                                         } else {
@@ -2085,7 +2031,59 @@ $(document).ready(function () {
 })
 
 
-function addNewRow(operacao, calculo, resultado) {
+function formatadonumeros(num) {
+
+    var num_1 = Number(num.replace(/,/g, "").replace(/\./g, ""));
+    var num_2 = Math.round((num - num_1) * 100);
+    var digits = [];
+    while (num_1 >= 1) {
+        var digit = num_1 % 10;
+        digits.push(digit);
+        num_1 = Math.floor(num_1 / 10);
+    }
+    num_1 = "";
+    for (var i = 0; i < digits.length; i++) {
+
+        if (i % 3 == 0 && i != 0) {
+            var comma = '.';
+        } else {
+            var comma = '';
+        }
+
+        num_1 = digits[i] + comma + num_1;
+
+    }
+    var num_with_comma = num_1
+    return num_with_comma;
+}
+
+function formatadonumerosSemTratativo(num) {
+
+    var num_1 = num;
+    var num_2 = Math.round((num - num_1) * 100);
+    var digits = [];
+    while (num_1 >= 1) {
+        var digit = num_1 % 10;
+        digits.push(digit);
+        num_1 = Math.floor(num_1 / 10);
+    }
+    num_1 = "";
+    for (var i = 0; i < digits.length; i++) {
+
+        if (i % 3 == 0 && i != 0) {
+            var comma = '.';
+        } else {
+            var comma = '';
+        }
+
+        num_1 = digits[i] + comma + num_1;
+
+    }
+    var num_with_comma = num_1
+    return num_with_comma;
+}
+
+function AdicionandoEquacaoAoHistorico(operacao, calculo, resultado) {
     const table = new DataTable('#tabelaCalculadora');
     table.row.add([operacao, calculo, resultado]).draw(false);
     table.order([1, 'asc']).draw();
