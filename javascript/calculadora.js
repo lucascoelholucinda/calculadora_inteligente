@@ -48,7 +48,7 @@ $(document).ready(function () {
             }
         }
     })
-
+    /* metodo para os botoes da calculadora */
     $('.botao_calculadora').click(function (e) {
         let dados = document.querySelector(".segundovalor").value
         let validandovirgula1 = dados.includes(',')
@@ -68,9 +68,8 @@ $(document).ready(function () {
             }
         }
     })
-
+    /* metodo para o botao de limpar historico */
     $('#botao_calculadora_limpar_historico').click(function (e) {
-
         document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
         document.querySelector(".primeirovalor").style.width = "192px"
         document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 109px"
@@ -81,11 +80,12 @@ $(document).ready(function () {
 
     })
 
+    /* metodo para o botao de limpar o segundo campo da calculadora */
     $('#botao_calculadora_limpar_campo').click(function (e) {
-
         document.querySelector(".segundovalor").value = ""
     })
 
+    /* metodo para o botao de virgula */
     $('#botao_calculadora_virgula').click(function (e) {
 
         let virgula = document.querySelector(".segundovalor").value + "" + e.target.value
@@ -97,19 +97,8 @@ $(document).ready(function () {
 
     })
 
-    $('#botao_calculadora_ponto').click(function (e) {
-
-        let ponto = document.querySelector(".texto_resultado").value + "" + e.target.value
-        if (ponto == ".") {
-            document.querySelector(".texto_resultado").value = 0 + "" + ponto
-        } else {
-            document.querySelector(".texto_resultado").value = ponto
-        }
-
-    })
-
+    /* metodo para o botao de adicao */
     $('#botao_calculadora_adicao').click(function (e) {
-        debugger
         document.querySelector(".primeirovalor").style.color = "#000000"
         let primeirovalor = document.querySelector(".primeirovalor").value
         let segundovalor = document.querySelector(".segundovalor").value
@@ -357,9 +346,8 @@ $(document).ready(function () {
 
     })
 
-
+    /* metodo para o botao de subtracao */
     $('#botao_calculadora_subtracao').click(function (e) {
-        debugger
         document.querySelector(".primeirovalor").style.color = "#000000"
         let primeirovalor = document.querySelector(".primeirovalor").value
         let segundovalor = document.querySelector(".segundovalor").value
@@ -606,10 +594,8 @@ $(document).ready(function () {
 
     })
 
-
+    /* metodo para o botao de multiplicacao */
     $('#botao_calculadora_multiplicacao').click(function (e) {
-
-        debugger
         document.querySelector(".primeirovalor").style.color = "#000000"
         let primeirovalor = document.querySelector(".primeirovalor").value
         let segundovalor = document.querySelector(".segundovalor").value
@@ -863,9 +849,8 @@ $(document).ready(function () {
 
     })
 
+    /* metodo para o botao de divisao */
     $('#botao_calculadora_divisao').click(function (e) {
-
-        debugger
         document.querySelector(".primeirovalor").style.color = "#000000"
         let primeirovalor = document.querySelector(".primeirovalor").value
         let segundovalor = document.querySelector(".segundovalor").value
@@ -1162,8 +1147,8 @@ $(document).ready(function () {
 
     })
 
+    /* metodo para o botao de resultado */
     $('#botao_calculadora_resultado').click(function (e) {
-        debugger
         document.querySelector(".primeirovalor").style.color = "#000000"
         let cor = document.querySelector(".primeirovalor").style.backgroundColor
         let primeirovalor = document.querySelector(".primeirovalor").value
@@ -1187,7 +1172,7 @@ $(document).ready(function () {
         }
 
         if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulaprimeirovalor == true) {
-            /* ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
+            /* a operação é de adicao, ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
             document.querySelector(".primeirovalor").style.width = "300px"
             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
@@ -1196,7 +1181,7 @@ $(document).ready(function () {
             document.querySelector(".segundovalor").value = ""
         } else {
             if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandovirgulasegundovalor == true) {
-                /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula */
+                /* a operação é de adicao, valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula */
                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                 let total = transformandoValorPontencia1 + segundovaloralterado
                 document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1206,7 +1191,7 @@ $(document).ready(function () {
                 AdicionandoEquacaoAoHistorico('Adição', calculo, total)
             } else {
                 if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
-                    /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
+                    /*a operação é de adicao,  valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
                     let segundovaloralterado = Number(segundovalor)
                     let total = transformandoValorPontencia1 + segundovaloralterado
                     document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1216,7 +1201,7 @@ $(document).ready(function () {
                     AdicionandoEquacaoAoHistorico('Adição', calculo, total)
                 } else {
                     if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
-                        /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
+                        /* a operação é de adicao, valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
                         let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                         let total = transformandoValorPontencia1 + segundovaloralterado
                         document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1226,7 +1211,7 @@ $(document).ready(function () {
                         AdicionandoEquacaoAoHistorico('Adição', calculo, total)
                     } else {
                         if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
-                            /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
+                            /*a operação é de adicao, ambos os campos tem valor , o segundo valor tem ponto e virgula*/
                             document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                             document.querySelector(".primeirovalor").style.width = "300px"
                             document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
@@ -1236,7 +1221,7 @@ $(document).ready(function () {
 
                         } else {
                             if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulasegundovalor == true) {
-                                /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto e sim tem virgula*/
+                                /*a operação é de adicao, ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto e sim tem virgula*/
                                 let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                 let total = primeirovaloralterado + segundovaloralterado
@@ -1249,7 +1234,7 @@ $(document).ready(function () {
 
                             } else {
                                 if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
-                                    /* ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
+                                    /* a operação é de adicao, ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
                                     let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                     let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                     let total = primeirovaloralterado + segundovaloralterado
@@ -1262,7 +1247,7 @@ $(document).ready(function () {
 
                                 } else {
                                     if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
-                                        /* ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
+                                        /*a operação é de adicao, ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
                                         let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                         let total = primeirovaloralterado + segundovaloralterado
@@ -1274,7 +1259,7 @@ $(document).ready(function () {
                                         AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                     } else {
                                         if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                            /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
+                                            /*a operação é de adicao, ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
                                             let primeirovaloralterado = Number(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                             let segundovaloralterado = parseInt(segundovalor)
                                             let total = primeirovaloralterado + segundovaloralterado
@@ -1287,7 +1272,7 @@ $(document).ready(function () {
 
                                         } else {
                                             if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                /* ambos os campos tem valor , o primeiro valor não ponto e o segundo campo tem ponto */
+                                                /*a operação é de adicao, ambos os campos tem valor , o primeiro valor não ponto e o segundo campo tem ponto */
                                                 let primeirovaloralterado = parseInt(primeirovalor)
                                                 let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                 let total = primeirovaloralterado + segundovaloralterado
@@ -1299,7 +1284,7 @@ $(document).ready(function () {
                                                 AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                             } else {
                                                 if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
-                                                    /* ambos os campos tem valor , ambos os campos tem ponto*/
+                                                    /*a operação é de adicao, ambos os campos tem valor , ambos os campos tem ponto*/
                                                     let primeirovaloralterado = Number(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                                     let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                     let total = primeirovaloralterado + segundovaloralterado
@@ -1311,7 +1296,7 @@ $(document).ready(function () {
                                                     AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                 } else {
                                                     if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                        /* ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
+                                                        /*a operação é de adicao, ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
                                                         let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                         let segundovaloralterado = parseInt(segundovalor)
                                                         let total = primeirovaloralterado + segundovaloralterado
@@ -1324,7 +1309,7 @@ $(document).ready(function () {
 
                                                     } else {
                                                         if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                            /* ambos os campos tem valor , o primeiro valor não tem virgula e o segundo valor tem virgula */
+                                                            /*a operação é de adicao, ambos os campos tem valor , o primeiro valor não tem virgula e o segundo valor tem virgula */
                                                             let primeirovaloralterado = parseInt(primeirovalor)
                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                             let total = primeirovaloralterado + segundovaloralterado
@@ -1336,7 +1321,7 @@ $(document).ready(function () {
                                                             AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                         } else {
                                                             if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                                /* ambos os campos tem valor , ambos os campos tem virgula*/
+                                                                /*a operação é de adicao, ambos os campos tem valor , ambos os campos tem virgula*/
                                                                 let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                 let total = primeirovaloralterado + segundovaloralterado
@@ -1348,7 +1333,7 @@ $(document).ready(function () {
                                                                 AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                             } else {
                                                                 if (cor == "rgba(8, 241, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                    /* ambos os valores são numeros inteiros*/
+                                                                    /*a operação é de adicao, ambos os valores são numeros inteiros*/
                                                                     let primeirovaloralterado = Number(primeirovalor)
                                                                     let segundovaloralterado = Number(segundovalor)
                                                                     let total = primeirovaloralterado + segundovaloralterado
@@ -1360,7 +1345,7 @@ $(document).ready(function () {
                                                                     AdicionandoEquacaoAoHistorico('Adição', calculo, valor)
                                                                 } else {
                                                                     if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulaprimeirovalor == true) {
-                                                                        /* ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
+                                                                        /*a operação é de subtracao, ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
                                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                         document.querySelector(".primeirovalor").style.width = "300px"
                                                                         document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
@@ -1369,7 +1354,7 @@ $(document).ready(function () {
                                                                         document.querySelector(".segundovalor").value = ""
                                                                     } else {
                                                                         if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandovirgulasegundovalor == true) {
-                                                                            /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula */
+                                                                            /*a operação é de subtracao, valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula */
                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                             let total = transformandoValorPontencia1 - segundovaloralterado
                                                                             document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1379,7 +1364,7 @@ $(document).ready(function () {
                                                                             AdicionandoEquacaoAoHistorico('Subtração', calculo, total)
                                                                         } else {
                                                                             if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
-                                                                                /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
+                                                                                /*a operação é de subtracao, valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
                                                                                 let segundovaloralterado = Number(segundovalor)
                                                                                 let total = transformandoValorPontencia1 - segundovaloralterado
                                                                                 document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1389,7 +1374,7 @@ $(document).ready(function () {
                                                                                 AdicionandoEquacaoAoHistorico('Subtração', calculo, total)
                                                                             } else {
                                                                                 if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
-                                                                                    /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
+                                                                                    /*a operação é de subtracao, valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
                                                                                     let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                     let total = transformandoValorPontencia1 - segundovaloralterado
                                                                                     document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1399,7 +1384,7 @@ $(document).ready(function () {
                                                                                     AdicionandoEquacaoAoHistorico('Subtração', calculo, total)
                                                                                 } else {
                                                                                     if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
-                                                                                        /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
+                                                                                        /*a operação é de subtracao, ambos os campos tem valor , o segundo valor tem ponto e virgula*/
                                                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                                         document.querySelector(".primeirovalor").style.width = "300px"
                                                                                         document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
@@ -1409,7 +1394,7 @@ $(document).ready(function () {
 
                                                                                     } else {
                                                                                         if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulasegundovalor == true) {
-                                                                                            /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto e sim tem virgula*/
+                                                                                            /*a operação é de subtracao, ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto e sim tem virgula*/
                                                                                             let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                             let total = primeirovaloralterado - segundovaloralterado
@@ -1422,7 +1407,7 @@ $(document).ready(function () {
 
                                                                                         } else {
                                                                                             if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
-                                                                                                /* ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
+                                                                                                /*a operação é de subtracao, ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
                                                                                                 let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                 let total = primeirovaloralterado - segundovaloralterado
@@ -1435,7 +1420,7 @@ $(document).ready(function () {
 
                                                                                             } else {
                                                                                                 if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
-                                                                                                    /* ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
+                                                                                                    /*a operação é de subtracao, ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
                                                                                                     let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                     let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                     let total = primeirovaloralterado - segundovaloralterado
@@ -1447,7 +1432,7 @@ $(document).ready(function () {
                                                                                                     AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                 } else {
                                                                                                     if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                        /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
+                                                                                                        /*a operação é de subtracao, ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
                                                                                                         let primeirovaloralterado = Number(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                         let segundovaloralterado = parseInt(segundovalor)
                                                                                                         let total = primeirovaloralterado - segundovaloralterado
@@ -1460,7 +1445,7 @@ $(document).ready(function () {
 
                                                                                                     } else {
                                                                                                         if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                            /* ambos os campos tem valor , o primeiro valor não ponto e o segundo campo tem ponto */
+                                                                                                            /*a operação é de subtracao, ambos os campos tem valor , o primeiro valor não ponto e o segundo campo tem ponto */
                                                                                                             let primeirovaloralterado = parseInt(primeirovalor)
                                                                                                             let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                             let total = primeirovaloralterado - segundovaloralterado
@@ -1472,7 +1457,7 @@ $(document).ready(function () {
                                                                                                             AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                         } else {
                                                                                                             if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
-                                                                                                                /* ambos os campos tem valor , ambos os campos tem ponto*/
+                                                                                                                /*a operação é de subtracao, ambos os campos tem valor , ambos os campos tem ponto*/
                                                                                                                 let primeirovaloralterado = Number(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                 let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                 let total = primeirovaloralterado - segundovaloralterado
@@ -1484,7 +1469,7 @@ $(document).ready(function () {
                                                                                                                 AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                             } else {
                                                                                                                 if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                                                                                    /* ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
+                                                                                                                    /*a operação é de subtracao, ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
                                                                                                                     let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                                     let segundovaloralterado = parseInt(segundovalor)
                                                                                                                     let total = primeirovaloralterado - segundovaloralterado
@@ -1497,7 +1482,7 @@ $(document).ready(function () {
 
                                                                                                                 } else {
                                                                                                                     if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                                                                                        /* ambos os campos tem valor , o primeiro valor não tem virgula e o segundo valor tem virgula */
+                                                                                                                        /*a operação é de subtracao, ambos os campos tem valor , o primeiro valor não tem virgula e o segundo valor tem virgula */
                                                                                                                         let primeirovaloralterado = parseInt(primeirovalor)
                                                                                                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                         let total = primeirovaloralterado - segundovaloralterado
@@ -1509,7 +1494,7 @@ $(document).ready(function () {
                                                                                                                         AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                                     } else {
                                                                                                                         if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                                                                                            /* ambos os campos tem valor , ambos os campos tem virgula*/
+                                                                                                                            /*a operação é de subtracao, ambos os campos tem valor , ambos os campos tem virgula*/
                                                                                                                             let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                             let total = primeirovaloralterado - segundovaloralterado
@@ -1521,7 +1506,7 @@ $(document).ready(function () {
                                                                                                                             AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                                         } else {
                                                                                                                             if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                                                /* ambos os valores são numeros inteiros*/
+                                                                                                                                /*a operação é de subtracao, ambos os valores são numeros inteiros*/
                                                                                                                                 let primeirovaloralterado = Number(primeirovalor)
                                                                                                                                 let segundovaloralterado = Number(segundovalor)
                                                                                                                                 let total = primeirovaloralterado - segundovaloralterado
@@ -1533,7 +1518,7 @@ $(document).ready(function () {
                                                                                                                                 AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                                             } else {
                                                                                                                                 if (cor == "rgba(241, 0, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                                                    /* ambos os valores são numeros inteiros*/
+                                                                                                                                    /*a operação é de subtracao, ambos os valores são numeros inteiros*/
                                                                                                                                     let primeirovaloralterado = Number(primeirovalor)
                                                                                                                                     let segundovaloralterado = Number(segundovalor)
                                                                                                                                     let total = primeirovaloralterado - segundovaloralterado
@@ -1545,7 +1530,7 @@ $(document).ready(function () {
                                                                                                                                     AdicionandoEquacaoAoHistorico('Subtração', calculo, valor)
                                                                                                                                 } else {
                                                                                                                                     if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulaprimeirovalor == true) {
-                                                                                                                                        /* ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
+                                                                                                                                        /*a operação é de subtracao, ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
                                                                                                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                                                                                         document.querySelector(".primeirovalor").style.width = "300px"
                                                                                                                                         document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
@@ -1554,7 +1539,7 @@ $(document).ready(function () {
                                                                                                                                         document.querySelector(".segundovalor").value = ""
                                                                                                                                     } else {
                                                                                                                                         if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandovirgulasegundovalor == true) {
-                                                                                                                                            /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula  */
+                                                                                                                                            /*a operação é de multiplicao, valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula  */
                                                                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                             let total = transformandoValorPontencia1 * segundovaloralterado
                                                                                                                                             document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1564,7 +1549,7 @@ $(document).ready(function () {
                                                                                                                                             AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
                                                                                                                                         } else {
                                                                                                                                             if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                                                                /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
+                                                                                                                                                /*a operação é de multiplicao, valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
                                                                                                                                                 let segundovaloralterado = Number(segundovalor)
                                                                                                                                                 let total = transformandoValorPontencia1 * segundovaloralterado
                                                                                                                                                 document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1574,7 +1559,7 @@ $(document).ready(function () {
                                                                                                                                                 AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
                                                                                                                                             } else {
                                                                                                                                                 if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
-                                                                                                                                                    /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
+                                                                                                                                                    /*a operação é de multiplicao, valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
                                                                                                                                                     let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                     let total = transformandoValorPontencia1 * segundovaloralterado
                                                                                                                                                     document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1584,7 +1569,7 @@ $(document).ready(function () {
                                                                                                                                                     AdicionandoEquacaoAoHistorico('Multiplicação', calculo, total)
                                                                                                                                                 } else {
                                                                                                                                                     if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
-                                                                                                                                                        /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
+                                                                                                                                                        /*a operação é de multiplicao, ambos os campos tem valor , o segundo valor tem ponto e virgula*/
                                                                                                                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                                                                                                         document.querySelector(".primeirovalor").style.width = "300px"
                                                                                                                                                         document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
@@ -1594,7 +1579,7 @@ $(document).ready(function () {
 
                                                                                                                                                     } else {
                                                                                                                                                         if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulasegundovalor == true) {
-                                                                                                                                                            /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto e sim tem virgula*/
+                                                                                                                                                            /*a operação é de multiplicao, ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto e sim tem virgula*/
                                                                                                                                                             let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                             let total = primeirovaloralterado * segundovaloralterado
@@ -1607,7 +1592,7 @@ $(document).ready(function () {
 
                                                                                                                                                         } else {
                                                                                                                                                             if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
-                                                                                                                                                                /* ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
+                                                                                                                                                                /*a operação é de multiplicao, ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
                                                                                                                                                                 let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                                                                                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                 let total = primeirovaloralterado * segundovaloralterado
@@ -1620,7 +1605,7 @@ $(document).ready(function () {
 
                                                                                                                                                             } else {
                                                                                                                                                                 if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
-                                                                                                                                                                    /* ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
+                                                                                                                                                                    /*a operação é de multiplicao, ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
                                                                                                                                                                     let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                                                                                     let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                     let total = primeirovaloralterado * segundovaloralterado
@@ -1632,7 +1617,7 @@ $(document).ready(function () {
                                                                                                                                                                     AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                                                                                                                 } else {
                                                                                                                                                                     if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                                                                                        /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
+                                                                                                                                                                        /*a operação é de multiplicao, ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
                                                                                                                                                                         let primeirovaloralterado = Number(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                         let segundovaloralterado = parseInt(segundovalor)
                                                                                                                                                                         let total = primeirovaloralterado * segundovaloralterado
@@ -1645,7 +1630,7 @@ $(document).ready(function () {
 
                                                                                                                                                                     } else {
                                                                                                                                                                         if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                                                                                            /* ambos os campos tem valor , o primeiro valor não ponto e o segundo campo tem ponto */
+                                                                                                                                                                            /*a operação é de multiplicao, ambos os campos tem valor , o primeiro valor não ponto e o segundo campo tem ponto */
                                                                                                                                                                             let primeirovaloralterado = parseInt(primeirovalor)
                                                                                                                                                                             let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                             let total = primeirovaloralterado * segundovaloralterado
@@ -1657,7 +1642,7 @@ $(document).ready(function () {
                                                                                                                                                                             AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                                                                                                                         } else {
                                                                                                                                                                             if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
-                                                                                                                                                                                /* ambos os campos tem valor , ambos os campos tem ponto*/
+                                                                                                                                                                                /*a operação é de multiplicao, ambos os campos tem valor , ambos os campos tem ponto*/
                                                                                                                                                                                 let primeirovaloralterado = Number(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                 let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                 let total = parseFloat(primeirovaloralterado * segundovaloralterado)
@@ -1678,7 +1663,7 @@ $(document).ready(function () {
                                                                                                                                                                                 }
                                                                                                                                                                             } else {
                                                                                                                                                                                 if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                                                                                                                                                    /* ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
+                                                                                                                                                                                    /*a operação é de multiplicao, ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
                                                                                                                                                                                     let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                                                                                                     let segundovaloralterado = parseInt(segundovalor)
                                                                                                                                                                                     let total = primeirovaloralterado * segundovaloralterado
@@ -1691,7 +1676,7 @@ $(document).ready(function () {
 
                                                                                                                                                                                 } else {
                                                                                                                                                                                     if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                                                                                                                                                        /* ambos os campos tem valor , o primeiro valor não tem virgula e o segundo valor tem virgula */
+                                                                                                                                                                                        /*a operação é de multiplicao, ambos os campos tem valor , o primeiro valor não tem virgula e o segundo valor tem virgula */
                                                                                                                                                                                         let primeirovaloralterado = parseInt(primeirovalor)
                                                                                                                                                                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                                                         let total = primeirovaloralterado * segundovaloralterado
@@ -1703,7 +1688,7 @@ $(document).ready(function () {
                                                                                                                                                                                         AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                                                                                                                                     } else {
                                                                                                                                                                                         if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                                                                                                                                                            /* ambos os campos tem valor , ambos os campos tem virgula*/
+                                                                                                                                                                                            /*a operação é de multiplicao, ambos os campos tem valor , ambos os campos tem virgula*/
                                                                                                                                                                                             let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                                                             let total = primeirovaloralterado * segundovaloralterado
@@ -1715,7 +1700,7 @@ $(document).ready(function () {
                                                                                                                                                                                             AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                                                                                                                                         } else {
                                                                                                                                                                                             if (cor == "rgba(255, 238, 0, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                                                                                                                /* ambos os valores são numeros inteiros*/
+                                                                                                                                                                                                /*a operação é de multiplicao, ambos os valores são numeros inteiros*/
                                                                                                                                                                                                 let primeirovaloralterado = Number(primeirovalor)
                                                                                                                                                                                                 let segundovaloralterado = Number(segundovalor)
                                                                                                                                                                                                 let total = primeirovaloralterado * segundovaloralterado
@@ -1727,7 +1712,7 @@ $(document).ready(function () {
                                                                                                                                                                                                 AdicionandoEquacaoAoHistorico('Multiplicação', calculo, valor)
                                                                                                                                                                                             } else {
                                                                                                                                                                                                 if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulaprimeirovalor == true) {
-                                                                                                                                                                                                    /* ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
+                                                                                                                                                                                                    /*a operação é de divisao, ambos os campos tem valor , o primeiro valor tem ponto e virgula*/
                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.width = "300px"
                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
@@ -1737,7 +1722,7 @@ $(document).ready(function () {
 
                                                                                                                                                                                                 } else {
                                                                                                                                                                                                     if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandovirgulasegundovalor == true) {
-                                                                                                                                                                                                        /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula  */
+                                                                                                                                                                                                        /*a operação é de divisao,  valor do primeiro valor está elevado a pontencia e o segundo valor é numero com virgula  */
                                                                                                                                                                                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                                                                         let total = transformandoValorPontencia1 / segundovaloralterado
                                                                                                                                                                                                         document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1747,7 +1732,7 @@ $(document).ready(function () {
                                                                                                                                                                                                         AdicionandoEquacaoAoHistorico('Divisão', calculo, total)
                                                                                                                                                                                                     } else {
                                                                                                                                                                                                         if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                                                                                                                            /* valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
+                                                                                                                                                                                                            /*a operação é de divisao,  valor do primeiro valor está elevado a pontencia e o segundo valor é numero inteiro  */
                                                                                                                                                                                                             let segundovaloralterado = Number(segundovalor)
                                                                                                                                                                                                             let total = transformandoValorPontencia1 / segundovaloralterado
                                                                                                                                                                                                             document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
@@ -1757,7 +1742,7 @@ $(document).ready(function () {
                                                                                                                                                                                                             AdicionandoEquacaoAoHistorico('Divisão', calculo, total)
                                                                                                                                                                                                         } else {
                                                                                                                                                                                                             if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && transformandoValorPontencia1 != "" && validandopontosegundovalor == true) {
-                                                                                                                                                                                                                /* valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
+                                                                                                                                                                                                                /*a operação é de divisao,  valor do primeiro valor está elevado a pontencia e o segundo valor está com ponto  */
                                                                                                                                                                                                                 let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                 let total = transformandoValorPontencia1 / segundovaloralterado
                                                                                                                                                                                                                 let valor = total.toLocaleString("pt-BR")
@@ -1768,7 +1753,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                 AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
                                                                                                                                                                                                             } else {
                                                                                                                                                                                                                 if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulasegundovalor == true) {
-                                                                                                                                                                                                                    /* ambos os campos tem valor , o segundo valor tem ponto e virgula*/
+                                                                                                                                                                                                                    /*a operação é de divisao,  ambos os campos tem valor , o segundo valor tem ponto e virgula*/
                                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.backgroundColor = "#f10000f2"
                                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.width = "300px"
                                                                                                                                                                                                                     document.querySelector(".primeirovalor").style.margin = "0px 5px 5px 55px"
@@ -1778,7 +1763,7 @@ $(document).ready(function () {
 
                                                                                                                                                                                                                 } else {
                                                                                                                                                                                                                     if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandovirgulasegundovalor == true) {
-                                                                                                                                                                                                                        /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto e sim tem virgula*/
+                                                                                                                                                                                                                        /*a operação é de divisao,  ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto e sim tem virgula*/
                                                                                                                                                                                                                         let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                                                                                         let total = primeirovaloralterado / segundovaloralterado
@@ -1791,7 +1776,7 @@ $(document).ready(function () {
 
                                                                                                                                                                                                                     } else {
                                                                                                                                                                                                                         if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontosegundovalor == true && validandovirgulaprimeirovalor == true) {
-                                                                                                                                                                                                                            /* ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
+                                                                                                                                                                                                                            /*a operação é de divisao,  ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
                                                                                                                                                                                                                             let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                                                                                                                                             let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                             let total = primeirovaloralterado / segundovaloralterado
@@ -1804,7 +1789,7 @@ $(document).ready(function () {
 
                                                                                                                                                                                                                         } else {
                                                                                                                                                                                                                             if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandovirgulasegundovalor == false && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true) {
-                                                                                                                                                                                                                                /* ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
+                                                                                                                                                                                                                                /*a operação é de divisao,  ambos os campos tem valor , o primeiro valor não tem ponto e sim virgula e o segundo valor tem ponto*/
                                                                                                                                                                                                                                 let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                                                                                                                                                 let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                                 let total = primeirovaloralterado / segundovaloralterado
@@ -1816,7 +1801,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                 AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
                                                                                                                                                                                                                             } else {
                                                                                                                                                                                                                                 if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                                                                                                                                                    /* ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
+                                                                                                                                                                                                                                    /*a operação é de divisao,  ambos os campos tem valor , o primeiro valor tem ponto e o segundo valor não tem ponto */
                                                                                                                                                                                                                                     let primeirovaloralterado = Number(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                                     let segundovaloralterado = parseInt(segundovalor)
                                                                                                                                                                                                                                     let total = primeirovaloralterado / segundovaloralterado
@@ -1829,7 +1814,7 @@ $(document).ready(function () {
 
                                                                                                                                                                                                                                 } else {
                                                                                                                                                                                                                                     if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == true && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                                                                                                                                                        /* ambos os campos tem valor , o primeiro valor não ponto e o segundo campo tem ponto */
+                                                                                                                                                                                                                                        /*a operação é de divisao,  ambos os campos tem valor , o primeiro valor não ponto e o segundo campo tem ponto */
                                                                                                                                                                                                                                         let primeirovaloralterado = parseInt(primeirovalor)
                                                                                                                                                                                                                                         let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                                         let total = primeirovaloralterado / segundovaloralterado
@@ -1841,7 +1826,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                         AdicionandoEquacaoAoHistorico('Divisão', calculo, valor)
                                                                                                                                                                                                                                     } else {
                                                                                                                                                                                                                                         if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == true && validandopontosegundovalor == true) {
-                                                                                                                                                                                                                                            /* ambos os campos tem valor , ambos os campos tem ponto*/
+                                                                                                                                                                                                                                            /*a operação é de divisao,  ambos os campos tem valor , ambos os campos tem ponto*/
                                                                                                                                                                                                                                             let primeirovaloralterado = Number(primeirovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                                             let segundovaloralterado = Number(segundovalor.replace(/,/g, "").replace(/\./g, ""))
                                                                                                                                                                                                                                             let total = parseFloat(primeirovaloralterado / segundovaloralterado)
@@ -1862,7 +1847,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                             }
                                                                                                                                                                                                                                         } else {
                                                                                                                                                                                                                                             if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == false && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                                                                                                                                                                                                                /* ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
+                                                                                                                                                                                                                                                /*a operação é de divisao,  ambos os campos tem valor , o primeiro valor tem virgula e o segundo valor não tem virgula */
                                                                                                                                                                                                                                                 let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                                                                                                                                                                 let segundovaloralterado = parseInt(segundovalor)
                                                                                                                                                                                                                                                 let total = primeirovaloralterado / segundovaloralterado
@@ -1885,7 +1870,7 @@ $(document).ready(function () {
 
                                                                                                                                                                                                                                             } else {
                                                                                                                                                                                                                                                 if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                                                                                                                                                                                                                    /* ambos os campos tem valor , o primeiro valor não tem virgula e o segundo valor tem virgula */
+                                                                                                                                                                                                                                                    /*a operação é de divisao,  ambos os campos tem valor , o primeiro valor não tem virgula e o segundo valor tem virgula */
                                                                                                                                                                                                                                                     let primeirovaloralterado = parseInt(primeirovalor)
                                                                                                                                                                                                                                                     let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                                                                                                                     let total = primeirovaloralterado / segundovaloralterado
@@ -1908,7 +1893,7 @@ $(document).ready(function () {
 
                                                                                                                                                                                                                                                 } else {
                                                                                                                                                                                                                                                     if (cor == "rgba(0, 247, 255, 0.95)" && segundovalor != "" && primeirovalor != "" && validandovirgulaprimeirovalor == true && validandovirgulasegundovalor == true && validandopontoprimeirovalor == false && validandopontosegundovalor == false) {
-                                                                                                                                                                                                                                                        /* ambos os campos tem valor , ambos os campos tem virgula*/
+                                                                                                                                                                                                                                                        /*a operação é de divisao,  ambos os campos tem valor , ambos os campos tem virgula*/
                                                                                                                                                                                                                                                         let primeirovaloralterado = parseFloat(primeirovalor.replace(/,/g, "."))
                                                                                                                                                                                                                                                         let segundovaloralterado = parseFloat(segundovalor.replace(/,/g, "."))
                                                                                                                                                                                                                                                         let total = primeirovaloralterado / segundovaloralterado
@@ -1931,7 +1916,7 @@ $(document).ready(function () {
 
                                                                                                                                                                                                                                                     } else {
                                                                                                                                                                                                                                                         if (segundovalor != "" && primeirovalor != "" && validandopontoprimeirovalor == false && validandopontosegundovalor == false && validandovirgulaprimeirovalor == false && validandovirgulasegundovalor == false) {
-                                                                                                                                                                                                                                                            /* ambos os valores são numeros inteiros*/
+                                                                                                                                                                                                                                                            /*a operação é de divisao,  ambos os valores são numeros inteiros*/
                                                                                                                                                                                                                                                             let primeirovaloralterado = Number(primeirovalor)
                                                                                                                                                                                                                                                             let segundovaloralterado = Number(segundovalor)
                                                                                                                                                                                                                                                             let total = primeirovaloralterado / segundovaloralterado
@@ -1953,6 +1938,7 @@ $(document).ready(function () {
                                                                                                                                                                                                                                                             }
 
                                                                                                                                                                                                                                                         } else {
+                                                                                                                                                                                                                                                            /* primeiro valor não é vazio e o segundo valor é vazio */
                                                                                                                                                                                                                                                             if (primeirovalor != "" && segundovalor == "") {
                                                                                                                                                                                                                                                                 document.querySelector(".primeirovalor").style.backgroundColor = "#ffffffff"
                                                                                                                                                                                                                                                                 document.querySelector(".primeirovalor").value = ""
@@ -2030,11 +2016,10 @@ $(document).ready(function () {
 
 })
 
-
+/* metodo para formatar os numeros da calculadora com tratativa para virgula ou ponto */
 function formatadonumeros(num) {
 
     var num_1 = Number(num.replace(/,/g, "").replace(/\./g, ""));
-    var num_2 = Math.round((num - num_1) * 100);
     var digits = [];
     while (num_1 >= 1) {
         var digit = num_1 % 10;
@@ -2057,10 +2042,10 @@ function formatadonumeros(num) {
     return num_with_comma;
 }
 
+/* metodo para formatar os numeros da calculadora sem tratativa */
 function formatadonumerosSemTratativo(num) {
 
     var num_1 = num;
-    var num_2 = Math.round((num - num_1) * 100);
     var digits = [];
     while (num_1 >= 1) {
         var digit = num_1 % 10;
@@ -2082,7 +2067,7 @@ function formatadonumerosSemTratativo(num) {
     var num_with_comma = num_1
     return num_with_comma;
 }
-
+/* metodo para adicionar o tipo de operação, a equação e seu resultado na tabela */
 function AdicionandoEquacaoAoHistorico(operacao, calculo, resultado) {
     const table = new DataTable('#tabelaCalculadora');
     table.row.add([operacao, calculo, resultado]).draw(false);
